@@ -1,0 +1,36 @@
+Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
+
+This repository contains documentation, integration examples, and a proof
+verification client for the AAAA Nexus API platform.
+
+You are free to:
+  - Share — copy and redistribute the material in any medium or format for
+    any purpose, even commercially.
+
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to the
+    license, and indicate if changes were made.
+  - NoDerivatives — If you remix, transform, or build upon the material,
+    you may not distribute the modified material.
+
+Full license text: https://creativecommons.org/licenses/by-nd/4.0/legalcode
+
+────────────────────────────────────────────────────────────────────────────
+
+PROPRIETARY NOTICE
+
+The underlying API implementation, algorithms, formal proofs, mathematical
+constants, infrastructure code, and all intellectual property powering the
+AAAA Nexus platform are proprietary to Atomadic Tech and are NOT included
+in this repository.
+
+This repository contains NO source code. It is a marketing and verification
+toolkit only.
+
+You may NOT:
+  - Reverse-engineer, decompile, or attempt to derive the source code of
+    the AAAA Nexus API from the materials in this repository
+  - Use the documentation or examples to build competing services
+  - Redistribute modified versions of these materials
+
+© 2026 Atomadic Tech. All rights reserved.
