@@ -178,17 +178,29 @@ $15 = 2,000 calls ($0.0075/call)
 $49 = 7,500 calls ($0.0065/call)
 Credits never expire. Purchase at /pay.
 
-## Product Families
-1. Hallucination Oracle — Certified hallucination bounds
-2. RatchetGate — Session re-keying security
-3. VeriRand — Quantum verified randomness
-4. Trust Phase Oracle — Mathematical trust scoring
-5. Topological Identity — Sybil-resistant verification
-6. AAAA Shield — Post-quantum session security
-7. Agent Discovery — A2A-compatible registry
-8. SLA Engine — Enforceable inter-agent SLAs
-9. Agent Escrow — Trustless payment escrow
-10. Reputation Ledger — On-chain reputation
+## Product Families (22)
+1. Oracle — Hallucination, bias, toxicity, safety, risk, compliance, trust, trust-phase (10 endpoints)
+2. RNG / VeriRand — Quantum, seeded, cryptographic, batch, stream, verify, entropy (7 endpoints)
+3. RatchetGate — Register, advance, probe, status, revoke, verify, list (7 endpoints)
+4. Identity — Verify, register, lookup, revoke, challenge (5 endpoints)
+5. Threat — Score, analyze, report, block, history (5 endpoints)
+6. Compliance — Check, audit, report, policy, scan (5 endpoints)
+7. Compression — Compress, batch, decompress, verify, stats (5 endpoints)
+8. Inference — Chat, streaming, embeddings, classify, models (5 endpoints)
+9. Agents Core — Register, topology, plan, intent-classify, status, update, deregister, capabilities, search, health, discover, message, negotiate, delegate (17 endpoints)
+10. Agents SLA — SLA, create, verify, list (4 endpoints)
+11. Agents Escrow — Escrow, create, release, dispute, status (5 endpoints)
+12. Agents Reputation — Reputation, history, score (3 endpoints)
+13. Swarm — Inbox, relay, broadcast, join, leave, topology, peers (7 endpoints)
+14. Text Processing — Summarize, sentiment, classify, embed, translate, extract, NER, tokenize, detect-language, keywords, similarity, rewrite (12 endpoints)
+15. Shield — Session, post-quantum, verify, rotate, status (5 endpoints)
+16. Delegation — Verify, chain, revoke, list, depth (5 endpoints)
+17. UCAN — Create, verify, revoke, delegate (4 endpoints)
+18. Key Management — Generate, rotate, revoke (3 endpoints)
+19. Credits — Balance, purchase, history, usage (4 endpoints)
+20. Audit — Log, trail, export (3 endpoints)
+21. A2A Protocol — Tasks, send + /a2a, /.well-known/* (5 endpoints)
+22. System — Health, status, pay, openapi.json, /mcp (5 endpoints)
 
 ## Contact
 Email: atomadic@proton.me

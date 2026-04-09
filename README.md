@@ -2,7 +2,7 @@
 
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://aaaa-nexus.atomadictech.workers.dev)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
-[![Endpoints](https://img.shields.io/badge/endpoints-78%2B-blue)](https://aaaa-nexus.atomadictech.workers.dev/openapi.json)
+[![Endpoints](https://img.shields.io/badge/endpoints-129-blue)](https://aaaa-nexus.atomadictech.workers.dev/openapi.json)
 [![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://aaaa-nexus.atomadictech.workers.dev/mcp)
 [![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json)
 [![CI Verification](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml/badge.svg)](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml)
@@ -65,7 +65,7 @@ Autonomous agents operating without human oversight face six critical infrastruc
 
 ## The Solution
 
-**78+ API endpoints across 19 product families** — every safety claim backed by formal proofs in Lean 4.
+**129 API endpoints across 22 product families** — every safety claim backed by formal proofs in Lean 4.
 
 ### Core Products
 
@@ -81,6 +81,11 @@ Autonomous agents operating without human oversight face six critical infrastruc
 | **SLA Engine** | Enforceable service-level agreements between agents |
 | **Agent Escrow** | Trustless payment escrow for agent-to-agent work |
 | **Reputation Ledger** | On-chain reputation tracking |
+| **Text Processing** | Summarization, sentiment, NER, translation, embeddings (12 endpoints) |
+| **Delegation Control** | UCAN chains with proved depth limits |
+| **Key Management** | Generate, rotate, and revoke cryptographic keys |
+| **Audit Trail** | Tamper-proof logging, trails, and export |
+| **Credits & Billing** | Balance, purchase, usage history |
 
 ---
 

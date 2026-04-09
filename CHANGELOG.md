@@ -7,7 +7,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 ## [0.5.0] — 2026-04-08
 
 ### Added
-- 78+ production endpoints across 19 product families
+- 129 production endpoints across 22 product families
 - Hallucination Oracle with formally verified upper bounds
 - RatchetGate session re-keying (mitigates session fixation attacks)
 - VeriRand quantum RNG with cryptographic proofs

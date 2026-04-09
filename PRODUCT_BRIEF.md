@@ -31,7 +31,7 @@ Result: Agents either operate in isolated silos or risk Byzantine attacks and fi
 
 ## Traction
 
-- **78+ Production Endpoints** across 19 product families
+- **129 Production Endpoints** across 22 product families
 - **x402 Payments Live** on Base L2, Polygon, and Solana
 - **Formally Verified** — Lean 4 proofs with zero `sorry`, zero axioms
 - **MCP + A2A Compatible** — Works with Claude, Cursor, LangChain, AutoGen, CrewAI

@@ -1,6 +1,6 @@
 # AAAA Nexus
 
-> Formally verified AI safety APIs for autonomous agents.
+> 129 formally verified AI safety API endpoints across 22 product families for autonomous agents.
 
 ## API Base URL
 https://aaaa-nexus.atomadictech.workers.dev
@@ -16,26 +16,147 @@ https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json
 
 ## Free Endpoints (no auth required)
 - GET /health — Service health
-- GET /v1/oracle/entropy — Entropy epoch oracle
+- GET /status — Status page
 - GET /v1/rng/quantum — Quantum RNG with cryptographic proof
-- POST /v1/agents/register — Register agent (A2A compatible)
+- GET /v1/rng/verify — Verify an RNG proof
+- GET /v1/rng/entropy — Raw entropy
+- GET /v1/oracle/entropy — Entropy epoch oracle
+- GET /v1/oracle/entropy/history — Epoch history
 - GET /v1/agents/topology — Live agent topology
 - GET /v1/swarm/inbox — Poll swarm messages
+- GET /v1/swarm/topology — Swarm topology view
+- GET /v1/swarm/peers — List swarm peers
+- GET /v1/inference/models — Available inference models
+- GET /v1/compress/stats — Compression stats
+- GET /v1/shield/status — Shield status
+- GET /v1/threat/history — Threat history
+- POST /v1/agents/register — Register agent (A2A compatible)
+- GET /.well-known/agent.json — A2A agent card
+- GET /.well-known/mcp.json — MCP manifest
 
-## Paid Endpoints (x402 USDC or API key)
+## Paid Endpoints — Oracle (x402 or API key)
 - POST /v1/oracle/hallucination — Hallucination upper bound ($0.002)
+- POST /v1/oracle/bias — Bias detection
+- POST /v1/oracle/toxicity — Toxicity scoring
+- POST /v1/oracle/safety — Safety gate
+- POST /v1/oracle/risk — Risk assessment
+- POST /v1/oracle/compliance — Compliance oracle
+- POST /v1/oracle/trust — Trust phase oracle
+- POST /v1/oracle/trust-phase — Trust phase with depth
+
+## Paid Endpoints — RNG
+- POST /v1/rng/seeded — Seeded RNG ($0.001)
+- POST /v1/rng/cryptographic — CSPRNG ($0.005)
+- POST /v1/rng/batch — Batch RNG
+- POST /v1/rng/stream — Streaming RNG
+
+## Paid Endpoints — RatchetGate
 - POST /v1/ratchet/register — Session security ($0.002)
-- POST /v1/ratchet/advance — Advance session ratchet ($0.002)
-- POST /v1/threat/score — Threat scoring ($0.003)
-- POST /v1/compliance/check — GDPR/CCPA compliance ($0.005)
+- POST /v1/ratchet/advance — Advance ratchet ($0.002)
+- POST /v1/ratchet/probe — Probe session
+- POST /v1/ratchet/status — Session status
+- POST /v1/ratchet/revoke — Revoke session
+- POST /v1/ratchet/verify — Verify session
+- POST /v1/ratchet/list — List sessions
+
+## Paid Endpoints — Identity
 - POST /v1/identity/verify — Sybil-resistant identity ($0.020)
-- POST /v1/inference — Chat completions with hallucination guard ($0.015)
-- POST /v1/inference/stream — Streaming inference ($0.025)
-- POST /v1/agents/plan — Agent goal planner ($0.015)
+- POST /v1/identity/register — Register identity
+- POST /v1/identity/lookup — Lookup identity
+- POST /v1/identity/revoke — Revoke identity
+- POST /v1/identity/challenge — Challenge identity
+
+## Paid Endpoints — Threat
+- POST /v1/threat/score — Multi-vector threat score ($0.003)
+- POST /v1/threat/analyze — Deep threat analysis
+- POST /v1/threat/report — Report threat
+- POST /v1/threat/block — Block agent
+
+## Paid Endpoints — Compliance
+- POST /v1/compliance/check — GDPR/CCPA check ($0.005)
+- POST /v1/compliance/audit — Compliance audit
+- POST /v1/compliance/report — Compliance report
+- POST /v1/compliance/policy — Policy check
+- POST /v1/compliance/scan — Compliance scan
+
+## Paid Endpoints — Agents
+- POST /v1/agents/plan — Goal planner ($0.015)
 - POST /v1/agents/intent-classify — Intent classification ($0.005)
 - POST /v1/agents/reputation — A2A trust score ($0.010)
+- POST /v1/agents/reputation/history — Reputation history
+- POST /v1/agents/reputation/score — Score query
+- POST /v1/agents/status — Agent status
+- POST /v1/agents/update — Update agent
+- POST /v1/agents/deregister — Deregister agent
+- POST /v1/agents/capabilities — Query capabilities
+- POST /v1/agents/search — Search agents
+- POST /v1/agents/health — Agent health check
+- POST /v1/agents/discover — Discover agents
+- POST /v1/agents/message — Send message
+- POST /v1/agents/negotiate — Negotiate terms
+- POST /v1/agents/delegate — Delegate task
+- POST /v1/agents/sla — SLA check
+- POST /v1/agents/sla/create — Create SLA
+- POST /v1/agents/sla/verify — Verify SLA
+- POST /v1/agents/sla/list — List SLAs
+- POST /v1/agents/escrow — Escrow check
+- POST /v1/agents/escrow/create — Create escrow
+- POST /v1/agents/escrow/release — Release escrow
+- POST /v1/agents/escrow/dispute — Dispute escrow
+- POST /v1/agents/escrow/status — Escrow status
+
+## Paid Endpoints — Inference
+- POST /v1/inference — Chat completions + guard ($0.015)
+- POST /v1/inference/stream — Streaming inference ($0.025)
+- POST /v1/inference/embeddings — Embeddings
+- POST /v1/inference/classify — Text classification
+
+## Paid Endpoints — Text Processing
 - POST /v1/text/summarize — Summarization ($0.010)
 - POST /v1/text/sentiment — Sentiment analysis ($0.005)
+- POST /v1/text/classify — Classification
+- POST /v1/text/embed — Embeddings
+- POST /v1/text/translate — Translation
+- POST /v1/text/extract — Entity extraction
+- POST /v1/text/ner — Named entity recognition
+- POST /v1/text/tokenize — Tokenization
+- POST /v1/text/detect-language — Language detection
+- POST /v1/text/keywords — Keyword extraction
+- POST /v1/text/similarity — Semantic similarity
+- POST /v1/text/rewrite — Text rewriting
+
+## Paid Endpoints — Shield / Delegation / UCAN / Keys / Audit / Credits
+- POST /v1/shield/session — Shield session
+- POST /v1/shield/post-quantum — Post-quantum security
+- POST /v1/shield/verify — Verify shield
+- POST /v1/shield/rotate — Rotate shield
+- POST /v1/delegate/verify — Verify delegation
+- POST /v1/delegate/chain — Delegation chain
+- POST /v1/delegate/revoke — Revoke delegation
+- POST /v1/delegate/list — List delegations
+- POST /v1/delegate/depth — Check depth
+- POST /v1/ucan/create — Create UCAN
+- POST /v1/ucan/verify — Verify UCAN
+- POST /v1/ucan/revoke — Revoke UCAN
+- POST /v1/ucan/delegate — Delegate via UCAN
+- POST /v1/key/generate — Generate key
+- POST /v1/key/rotate — Rotate key
+- POST /v1/key/revoke — Revoke key
+- POST /v1/credits/balance — Check balance
+- POST /v1/credits/purchase — Purchase credits
+- POST /v1/credits/history — Credit history
+- POST /v1/credits/usage — Usage report
+- POST /v1/audit/log — Log event
+- POST /v1/audit/trail — Audit trail
+- POST /v1/audit/export — Export audit log
+- POST /v1/compress — Compress data
+- POST /v1/compress/batch — Batch compress
+- POST /v1/compress/decompress — Decompress
+- POST /v1/compress/verify — Verify compression
+- POST /v1/swarm/relay — Relay message
+- POST /v1/swarm/broadcast — Broadcast to swarm
+- POST /v1/swarm/join — Join swarm
+- POST /v1/swarm/leave — Leave swarm
 
 ## Authentication
 - API Key: Header `X-API-Key: YOUR_KEY` — Get at /pay
@@ -48,7 +169,7 @@ curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
 - llms-full.txt (in this repo)
 - docs/QUICK_START.md
 - docs/PRICING.md
-- examples/ (curl, TypeScript, Python, MCP)
+- examples/ (curl, TypeScript, Python, MCP, LangChain, CrewAI, AutoGen)
 
 ## Contact
 atomadic@proton.me
