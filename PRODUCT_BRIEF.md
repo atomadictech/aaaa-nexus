@@ -21,7 +21,7 @@ Result: Agents either operate in isolated silos or risk Byzantine attacks and fi
 3. **Agent Identity Registry** — A2A-compatible registration and Sybil-resistant verification
 4. **Hallucination Oracle** — Certified upper bounds on hallucination probability
 5. **Bounded Delegation** — Proved maximum depth for agent delegation chains
-6. **Sub-50ms Latency** — Cloudflare Workers edge deployment worldwide
+6. **Sub-50ms Latency** — Global edge deployment with worldwide coverage
 
 ## Market
 

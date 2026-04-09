@@ -68,8 +68,8 @@ No signup. No API key. Agents pay directly with USDC.
 
 | Chain | Notes |
 |-------|-------|
-| **Base L2** (chain 8453) | Recommended — lowest fees |
-| **Polygon** (chain 137) | Supported |
+| **Base L2** | Recommended — lowest fees |
+| **Polygon** | Supported |
 | **Solana** | Supported |
 
 ## FAQ

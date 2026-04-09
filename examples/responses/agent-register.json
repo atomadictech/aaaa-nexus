@@ -1,0 +1,6 @@
+{
+  "agent_id": "my-agent-001",
+  "registered_at": "2026-04-09T14:30:00Z",
+  "status": "active",
+  "capabilities": ["inference", "planning"]
+}

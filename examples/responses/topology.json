@@ -1,0 +1,7 @@
+{
+  "agents": 1247,
+  "edges": 3891,
+  "average_degree": 3.1,
+  "components": 5,
+  "largest_component_size": 1240
+}

@@ -113,7 +113,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/compliance/check \
   }'
 ```
 
-### Chat Inference (Llama 3.1 8B + Hallucination Guard)
+### Chat Inference (with Hallucination Guard)
 
 ```bash
 curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/inference \

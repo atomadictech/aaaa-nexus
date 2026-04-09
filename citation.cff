@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use AAAA Nexus in your research, please cite it as below."
+title: "AAAA Nexus: Formally Verified AI Safety APIs"
+type: software
+authors:
+  - name: "Atomadic Tech"
+    email: atomadic@proton.me
+url: "https://aaaa-nexus.atomadictech.workers.dev"
+repository-code: "https://github.com/atomadictech/aaaa-nexus"
+license: CC-BY-ND-4.0
+keywords:
+  - formal-verification
+  - ai-safety
+  - autonomous-agents
+  - mcp
+  - a2a-protocol
+  - x402
+  - micropayments
+abstract: >-
+  AAAA Nexus provides 78+ formally verified AI safety API endpoints
+  for autonomous agents, with built-in x402 USDC micropayments,
+  MCP server support, and Google A2A protocol compatibility.
+date-released: "2026-04-08"
+version: "0.5.0"

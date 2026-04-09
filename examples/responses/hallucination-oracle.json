@@ -1,0 +1,8 @@
+{
+  "claim": "The capital of France is Paris",
+  "context": "geography",
+  "hallucination_bound": 0.0012,
+  "verified": true,
+  "proof_type": "formal",
+  "timestamp": "2026-04-09T14:30:00Z"
+}

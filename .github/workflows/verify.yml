@@ -1,0 +1,33 @@
+name: Proof Verification
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 06:00 UTC
+  workflow_dispatch:       # Manual trigger
+  push:
+    branches: [main]
+    paths: ['verify.sh']
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run proof verifier
+        run: |
+          chmod +x verify.sh
+          bash verify.sh
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Proof Verification Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Ran \`verify.sh\` against the live API at:" >> $GITHUB_STEP_SUMMARY
+          echo "https://aaaa-nexus.atomadictech.workers.dev" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "See job output above for detailed results." >> $GITHUB_STEP_SUMMARY

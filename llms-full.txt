@@ -1,0 +1,195 @@
+# AAAA Nexus — Full LLM Reference
+
+> Formally verified AI safety APIs for autonomous agents.
+> Every safety guarantee is mathematically proved in Lean 4 — not benchmarked, not tested, proved.
+
+## API Base URL
+https://aaaa-nexus.atomadictech.workers.dev
+
+## Protocols Supported
+- REST API (JSON over HTTPS)
+- MCP (Model Context Protocol) — https://aaaa-nexus.atomadictech.workers.dev/mcp
+- A2A (Agent-to-Agent, Google protocol) — https://aaaa-nexus.atomadictech.workers.dev/a2a
+- x402 (HTTP 402 micropayment protocol with USDC)
+
+## Complete Endpoint Reference
+
+### Free Endpoints (no authentication required)
+
+GET /health
+  Returns: { status, version, build, epoch, next_epoch_in_s, helix }
+  Purpose: Service health and version info
+
+GET /openapi.json
+  Returns: Full OpenAPI 3.x specification
+  Purpose: Machine-readable API documentation
+
+GET /.well-known/agent.json
+  Returns: A2A agent card (Google A2A protocol)
+  Purpose: Agent discovery and capability advertisement
+
+GET /.well-known/mcp.json
+  Returns: MCP server manifest
+  Purpose: MCP client auto-discovery
+
+GET /v1/oracle/entropy
+  Returns: { epoch, entropy, timestamp, ... }
+  Purpose: Entropy epoch oracle for zero-RTT A2A handshakes
+
+GET /v1/rng/quantum
+  Returns: { random, bits, source, ... }
+  Purpose: Verifiable quantum randomness with cryptographic proof
+
+POST /v1/agents/register
+  Body: { agent_id: string, capabilities: string[] }
+  Returns: { agent_id, registered_at, status }
+  Purpose: Register agent in swarm topology (A2A compatible)
+
+GET /v1/agents/topology
+  Returns: { agents, edges, average_degree, components, ... }
+  Purpose: Live swarm topology of all registered agents
+
+GET /v1/swarm/inbox
+  Returns: Array of queued messages
+  Purpose: Poll messages for registered agent
+
+### Paid Endpoints (require x402 USDC payment or API key)
+
+POST /v1/oracle/hallucination — $0.002/call
+  Body: { claim: string, context: string }
+  Returns: Certified hallucination upper bound with formal proof
+  Purpose: Detect hallucinations with mathematical certainty
+
+POST /v1/ratchet/register — $0.002/call
+  Body: { session_id: string }
+  Returns: Session registration confirmation
+  Purpose: RatchetGate session security (mitigates session fixation)
+
+POST /v1/ratchet/advance — $0.002/call
+  Body: { session_id: string }
+  Returns: Advanced session state
+  Purpose: Advance session ratchet window for re-keying
+
+POST /v1/identity/verify — $0.020/call
+  Body: { agent_id: string }
+  Returns: Sybil-resistance verification with proved depth limit
+  Purpose: Verify agent identity in untrusted networks
+
+POST /v1/threat/score — $0.003/call
+  Body: { agent_id: string, context: string }
+  Returns: Multi-vector threat score (velocity + behavioral + intent)
+  Purpose: Threat assessment for agent interactions
+
+POST /v1/compliance/check — $0.005/call
+  Body: { data_type: string, jurisdiction: string, operation: string }
+  Returns: GDPR/CCPA compliance gate with formal proof
+  Purpose: Regulatory compliance verification
+
+POST /v1/inference — $0.015/call
+  Body: { messages: [{ role: string, content: string }] }
+  Returns: Chat completion with hallucination guard
+  Purpose: Inference with built-in safety guarantees
+
+POST /v1/inference/stream — $0.025/call
+  Body: { messages: [{ role: string, content: string }] }
+  Returns: Streaming SSE with chain-of-thought
+  Purpose: Streaming inference with reasoning trace
+
+POST /v1/compress — free/pro
+  Body: { data: string }
+  Returns: Compressed output
+  Purpose: HELIX tensor compression (83% size reduction)
+
+POST /v1/agents/plan — $0.015/call
+  Body: { goal: string, constraints: object }
+  Returns: Goal decomposition and action plan
+  Purpose: Autonomous agent goal planning
+
+POST /v1/agents/intent-classify — $0.005/call
+  Body: { text: string }
+  Returns: Top-3 intent classifications
+  Purpose: Classify agent intent from natural language
+
+POST /v1/agents/reputation — $0.010/call
+  Body: { agent_id: string }
+  Returns: A2A trust score + compliance status
+  Purpose: Agent reputation and trust assessment
+
+POST /v1/text/summarize — $0.010/call
+  Body: { text: string }
+  Returns: Extractive summary
+  Purpose: Text summarization
+
+POST /v1/text/sentiment — $0.005/call
+  Body: { text: string }
+  Returns: Sentiment classification
+  Purpose: Sentiment analysis
+
+## Authentication Methods
+
+### API Key
+Header: X-API-Key: YOUR_KEY
+Get a key: https://aaaa-nexus.atomadictech.workers.dev/pay
+
+### x402 Autonomous Payments
+No signup required. Flow:
+1. Call any paid endpoint without credentials
+2. Receive HTTP 402 with payment details (amount, treasury, chain)
+3. Send USDC on Base L2, Polygon, or Solana
+4. Retry request with X-Payment-Proof header
+5. Receive result
+
+## MCP Server Configuration
+
+Add to claude_desktop_config.json or cursor settings:
+{
+  "mcpServers": {
+    "aaaa-nexus": {
+      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+    }
+  }
+}
+
+Available MCP tools: health, metrics, oracle_entropy, oracle_hallucination,
+ratchetgate_session, ratchetgate_register, ratchetgate_advance, inference, inference_stream
+
+## A2A Protocol
+
+Agent card: GET /.well-known/agent.json
+A2A endpoint: POST /a2a
+Methods supported: message/send, tasks/get
+
+Example A2A message:
+{
+  "jsonrpc": "2.0",
+  "method": "message/send",
+  "params": {
+    "message": {
+      "role": "user",
+      "parts": [{ "type": "text", "text": "Check health" }]
+    }
+  },
+  "id": "1"
+}
+
+## Credit Packs
+$4 = 500 calls ($0.008/call)
+$15 = 2,000 calls ($0.0075/call)
+$49 = 7,500 calls ($0.0065/call)
+Credits never expire. Purchase at /pay.
+
+## Product Families
+1. Hallucination Oracle — Certified hallucination bounds
+2. RatchetGate — Session re-keying security
+3. VeriRand — Quantum verified randomness
+4. Trust Phase Oracle — Mathematical trust scoring
+5. Topological Identity — Sybil-resistant verification
+6. AAAA Shield — Post-quantum session security
+7. Agent Discovery — A2A-compatible registry
+8. SLA Engine — Enforceable inter-agent SLAs
+9. Agent Escrow — Trustless payment escrow
+10. Reputation Ledger — On-chain reputation
+
+## Contact
+Email: atomadic@proton.me
+GitHub: https://github.com/atomadictech/aaaa-nexus

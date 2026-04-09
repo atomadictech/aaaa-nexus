@@ -1,0 +1,735 @@
+{
+  "info": {
+    "name": "AAAA Nexus API",
+    "description": "Formally verified AI safety APIs for autonomous agents.\n\nEvery safety guarantee is mathematically proved in Lean 4 — not benchmarked, not tested, proved.\n\n**Authentication**\n- Free endpoints: no authentication required\n- Paid endpoints: set the `API_KEY` variable, or use x402 micropayment flow (see docs)\n\n**Variables**\n- `API_BASE`: base URL (default: https://aaaa-nexus.atomadictech.workers.dev)\n- `API_KEY`: your API key (get one at /pay)\n\n**x402 Flow (keyless)**\n1. Call any paid endpoint without credentials\n2. Receive HTTP 402 with payment details\n3. Send USDC on Base L2, Polygon, or Solana\n4. Retry with `X-Payment-Proof` header",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "API_BASE",
+      "value": "https://aaaa-nexus.atomadictech.workers.dev",
+      "type": "string"
+    },
+    {
+      "key": "API_KEY",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Free Endpoints",
+      "description": "No authentication required.",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/health",
+              "host": ["{{API_BASE}}"],
+              "path": ["health"]
+            },
+            "description": "Service health and version info. Returns status, version, build, epoch, next_epoch_in_s, and helix fields."
+          },
+          "response": []
+        },
+        {
+          "name": "OpenAPI Specification",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/openapi.json",
+              "host": ["{{API_BASE}}"],
+              "path": ["openapi.json"]
+            },
+            "description": "Full OpenAPI 3.x specification. Machine-readable API documentation."
+          },
+          "response": []
+        },
+        {
+          "name": "A2A Agent Card",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/.well-known/agent.json",
+              "host": ["{{API_BASE}}"],
+              "path": [".well-known", "agent.json"]
+            },
+            "description": "A2A agent card (Google A2A protocol). Used for agent discovery and capability advertisement."
+          },
+          "response": []
+        },
+        {
+          "name": "MCP Server Manifest",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/.well-known/mcp.json",
+              "host": ["{{API_BASE}}"],
+              "path": [".well-known", "mcp.json"]
+            },
+            "description": "MCP server manifest. Used by MCP clients for auto-discovery."
+          },
+          "response": []
+        },
+        {
+          "name": "Oracle Entropy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/v1/oracle/entropy",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "oracle", "entropy"]
+            },
+            "description": "Entropy epoch oracle for zero-RTT A2A handshakes. Returns epoch, entropy, timestamp, and related fields."
+          },
+          "response": []
+        },
+        {
+          "name": "Quantum Randomness",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/v1/rng/quantum",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "rng", "quantum"]
+            },
+            "description": "Verifiable quantum randomness with cryptographic proof. Returns random value, bit count, and source."
+          },
+          "response": []
+        },
+        {
+          "name": "Register Agent",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"my-agent-001\",\n  \"capabilities\": [\"text-generation\", \"tool-use\", \"planning\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/agents/register",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "agents", "register"]
+            },
+            "description": "Register agent in swarm topology (A2A compatible). Returns agent_id, registered_at, and status."
+          },
+          "response": []
+        },
+        {
+          "name": "Swarm Topology",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/v1/agents/topology",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "agents", "topology"]
+            },
+            "description": "Live swarm topology of all registered agents. Returns agents, edges, average_degree, and components."
+          },
+          "response": []
+        },
+        {
+          "name": "Swarm Inbox",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/v1/swarm/inbox",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "swarm", "inbox"]
+            },
+            "description": "Poll messages for a registered agent. Returns an array of queued messages."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Paid Endpoints (Oracle)",
+      "description": "Hallucination oracle. Requires API key (`X-API-Key` header) or x402 micropayment.",
+      "item": [
+        {
+          "name": "Hallucination Check",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claim\": \"The Eiffel Tower is located in Berlin, Germany.\",\n  \"context\": \"The user asked about famous European landmarks.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/oracle/hallucination",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "oracle", "hallucination"]
+            },
+            "description": "$0.002/call. Detect hallucinations with mathematical certainty. Returns a certified hallucination upper bound with formal proof."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Paid Endpoints (Security)",
+      "description": "RatchetGate session security and identity/threat/compliance tools. Requires API key or x402 micropayment.",
+      "item": [
+        {
+          "name": "RatchetGate — Register Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"sess_abc123xyz\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/ratchet/register",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "ratchet", "register"]
+            },
+            "description": "$0.002/call. RatchetGate session security — mitigates session fixation. Returns session registration confirmation."
+          },
+          "response": []
+        },
+        {
+          "name": "RatchetGate — Advance Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"sess_abc123xyz\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/ratchet/advance",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "ratchet", "advance"]
+            },
+            "description": "$0.002/call. Advance session ratchet window for re-keying. Returns advanced session state."
+          },
+          "response": []
+        },
+        {
+          "name": "Identity Verify",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"agent-7f3a9b2c\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/identity/verify",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "identity", "verify"]
+            },
+            "description": "$0.020/call. Verify agent identity in untrusted networks. Returns Sybil-resistance verification with proved depth limit."
+          },
+          "response": []
+        },
+        {
+          "name": "Threat Score",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"agent-7f3a9b2c\",\n  \"context\": \"Agent attempted to access restricted resource after 3 failed authentication attempts.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/threat/score",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "threat", "score"]
+            },
+            "description": "$0.003/call. Threat assessment for agent interactions. Returns multi-vector threat score (velocity + behavioral + intent)."
+          },
+          "response": []
+        },
+        {
+          "name": "Compliance Check",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data_type\": \"personal_email\",\n  \"jurisdiction\": \"EU\",\n  \"operation\": \"store\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/compliance/check",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "compliance", "check"]
+            },
+            "description": "$0.005/call. Regulatory compliance verification. Returns GDPR/CCPA compliance gate with formal proof."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Paid Endpoints (Agents)",
+      "description": "Agent planning, intent classification, and reputation scoring. Requires API key or x402 micropayment.",
+      "item": [
+        {
+          "name": "Agent Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"goal\": \"Research and summarize the top 5 papers on LLM alignment published in 2024.\",\n  \"constraints\": {\n    \"max_steps\": 10,\n    \"time_limit_seconds\": 300,\n    \"tools_allowed\": [\"web_search\", \"summarize\"]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/agents/plan",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "agents", "plan"]
+            },
+            "description": "$0.015/call. Autonomous agent goal planning. Returns goal decomposition and action plan."
+          },
+          "response": []
+        },
+        {
+          "name": "Intent Classify",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Can you help me book a flight to Tokyo next week and find a hotel near Shinjuku?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/agents/intent-classify",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "agents", "intent-classify"]
+            },
+            "description": "$0.005/call. Classify agent intent from natural language. Returns top-3 intent classifications."
+          },
+          "response": []
+        },
+        {
+          "name": "Agent Reputation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"agent-7f3a9b2c\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/agents/reputation",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "agents", "reputation"]
+            },
+            "description": "$0.010/call. Agent reputation and trust assessment. Returns A2A trust score and compliance status."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Paid Endpoints (Inference)",
+      "description": "LLM inference with built-in hallucination guards. Requires API key or x402 micropayment.",
+      "item": [
+        {
+          "name": "Inference (Standard)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the capital of France?\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/inference",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "inference"]
+            },
+            "description": "$0.015/call. Inference with built-in safety guarantees. Returns chat completion with hallucination guard."
+          },
+          "response": []
+        },
+        {
+          "name": "Inference (Streaming)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Explain the concept of formal verification in software engineering.\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/inference/stream",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "inference", "stream"]
+            },
+            "description": "$0.025/call. Streaming inference with reasoning trace. Returns streaming SSE with chain-of-thought. Note: Postman may not display SSE streams inline — use the Postman console or a streaming-capable client."
+          },
+          "response": []
+        },
+        {
+          "name": "Compress (HELIX)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": \"The quick brown fox jumps over the lazy dog. This is a sample string to demonstrate HELIX tensor compression capabilities.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/compress",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "compress"]
+            },
+            "description": "Free/pro tiers. HELIX tensor compression — up to 83% size reduction. Returns compressed output."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Paid Endpoints (Text)",
+      "description": "Text analysis utilities. Requires API key or x402 micropayment.",
+      "item": [
+        {
+          "name": "Text Summarize",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Formal verification is a technique used in computer science and engineering to prove or disprove the correctness of a system with respect to a certain formal specification or property, using formal methods of mathematics. It can be used to verify hardware and software systems. The verification of these systems is done by providing a formal proof on an abstract mathematical model of the system, and the correspondence between the mathematical model and the nature of the system is then done separately. Examples of mathematical objects often used to model systems are finite-state machines, labelled transition systems, Petri nets, vector addition systems, timed automata, hybrid automata, process algebra, formal semantics of programming languages such as operational semantics, denotational semantics, axiomatic semantics and Hoare logic.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/text/summarize",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "text", "summarize"]
+            },
+            "description": "$0.010/call. Text summarization. Returns an extractive summary."
+          },
+          "response": []
+        },
+        {
+          "name": "Text Sentiment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"I absolutely love how the new API makes it so easy to add formally verified safety guarantees to any application!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/v1/text/sentiment",
+              "host": ["{{API_BASE}}"],
+              "path": ["v1", "text", "sentiment"]
+            },
+            "description": "$0.005/call. Sentiment analysis. Returns sentiment classification."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Protocol",
+      "description": "MCP and A2A protocol endpoints.",
+      "item": [
+        {
+          "name": "MCP Endpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tools/list\",\n  \"params\": {},\n  \"id\": \"1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/mcp",
+              "host": ["{{API_BASE}}"],
+              "path": ["mcp"]
+            },
+            "description": "Model Context Protocol (MCP) endpoint. Available tools: health, metrics, oracle_entropy, oracle_hallucination, ratchetgate_session, ratchetgate_register, ratchetgate_advance, inference, inference_stream.\n\nConfigure in claude_desktop_config.json:\n```json\n{\n  \"mcpServers\": {\n    \"aaaa-nexus\": {\n      \"url\": \"https://aaaa-nexus.atomadictech.workers.dev/mcp\"\n    }\n  }\n}\n```"
+          },
+          "response": []
+        },
+        {
+          "name": "A2A — Send Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"message/send\",\n  \"params\": {\n    \"message\": {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Check health\"\n        }\n      ]\n    }\n  },\n  \"id\": \"1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/a2a",
+              "host": ["{{API_BASE}}"],
+              "path": ["a2a"]
+            },
+            "description": "Agent-to-Agent (A2A) protocol endpoint (Google A2A). Supported methods: message/send, tasks/get."
+          },
+          "response": []
+        },
+        {
+          "name": "A2A — Get Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tasks/get\",\n  \"params\": {\n    \"id\": \"task-id-here\"\n  },\n  \"id\": \"2\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/a2a",
+              "host": ["{{API_BASE}}"],
+              "path": ["a2a"]
+            },
+            "description": "Agent-to-Agent (A2A) protocol — retrieve task status and result by task ID."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

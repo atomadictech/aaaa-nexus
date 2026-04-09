@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "version": "0.5.0",
+  "build": "2026-04-08",
+  "epoch": 17409216,
+  "next_epoch_in_s": 45,
+  "helix": {
+    "anti_hallucination": true,
+    "ecc_status": true,
+    "integrity_parity": true
+  }
+}

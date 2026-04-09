@@ -1,0 +1,54 @@
+# AAAA Nexus
+
+> Formally verified AI safety APIs for autonomous agents.
+
+## API Base URL
+https://aaaa-nexus.atomadictech.workers.dev
+
+## MCP Server
+https://aaaa-nexus.atomadictech.workers.dev/mcp
+
+## OpenAPI Spec
+https://aaaa-nexus.atomadictech.workers.dev/openapi.json
+
+## A2A Agent Card
+https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json
+
+## Free Endpoints (no auth required)
+- GET /health — Service health
+- GET /v1/oracle/entropy — Entropy epoch oracle
+- GET /v1/rng/quantum — Quantum RNG with cryptographic proof
+- POST /v1/agents/register — Register agent (A2A compatible)
+- GET /v1/agents/topology — Live agent topology
+- GET /v1/swarm/inbox — Poll swarm messages
+
+## Paid Endpoints (x402 USDC or API key)
+- POST /v1/oracle/hallucination — Hallucination upper bound ($0.002)
+- POST /v1/ratchet/register — Session security ($0.002)
+- POST /v1/ratchet/advance — Advance session ratchet ($0.002)
+- POST /v1/threat/score — Threat scoring ($0.003)
+- POST /v1/compliance/check — GDPR/CCPA compliance ($0.005)
+- POST /v1/identity/verify — Sybil-resistant identity ($0.020)
+- POST /v1/inference — Chat completions with hallucination guard ($0.015)
+- POST /v1/inference/stream — Streaming inference ($0.025)
+- POST /v1/agents/plan — Agent goal planner ($0.015)
+- POST /v1/agents/intent-classify — Intent classification ($0.005)
+- POST /v1/agents/reputation — A2A trust score ($0.010)
+- POST /v1/text/summarize — Summarization ($0.010)
+- POST /v1/text/sentiment — Sentiment analysis ($0.005)
+
+## Authentication
+- API Key: Header `X-API-Key: YOUR_KEY` — Get at /pay
+- x402: Autonomous USDC payments on Base L2 / Polygon / Solana
+
+## Quick Test
+curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+
+## Full Documentation
+- llms-full.txt (in this repo)
+- docs/QUICK_START.md
+- docs/PRICING.md
+- examples/ (curl, TypeScript, Python, MCP)
+
+## Contact
+atomadic@proton.me
