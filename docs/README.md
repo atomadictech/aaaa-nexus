@@ -23,7 +23,7 @@
 
 ## API Reference
 - [OpenAPI Spec](../openapi.json) — Full machine-readable API specification
-- [Live API Docs](https://aaaa-nexus.atomadictech.workers.dev/openapi.json) — Always up-to-date
+- [Live API Docs](https://atomadic.tech/openapi.json) — Always up-to-date
 
 ## Project
 - [Product Brief](../PRODUCT_BRIEF.md) — What we're building and why

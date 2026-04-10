@@ -7,7 +7,7 @@
 **Solution:** Pipe every critical output through the Hallucination Oracle before acting.
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination \
+curl -X POST https://atomadic.tech/v1/oracle/hallucination \
   -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -28,13 +28,13 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination
 
 ```bash
 # Register session
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/register \
+curl -X POST https://atomadic.tech/v1/ratchet/register \
   -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{"session_id": "critical-session-001"}'
 
 # Advance ratchet periodically
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/advance \
+curl -X POST https://atomadic.tech/v1/ratchet/advance \
   -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{"session_id": "critical-session-001"}'
@@ -53,7 +53,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/advance \
 ```python
 import requests
 
-API = "https://aaaa-nexus.atomadictech.workers.dev"
+API = "https://atomadic.tech"
 KEY = {"X-API-Key": "YOUR_KEY", "Content-Type": "application/json"}
 
 # Check seller's reputation before transacting
@@ -78,7 +78,7 @@ if rep["trust_score"] > 0.8:
 **Solution:** Use VeriRand. Every random number comes with a cryptographic proof of fairness.
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+curl https://atomadic.tech/v1/rng/quantum
 ```
 
 **Result:** Random output that anyone can independently verify was generated fairly.
@@ -119,7 +119,7 @@ else:
 
 ```bash
 # Register your agent
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
+curl -X POST https://atomadic.tech/v1/agents/register \
   -H "Content-Type: application/json" \
   -d '{
     "agent_id": "orchestrator-001",
@@ -127,7 +127,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
   }'
 
 # Discover available agents
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/agents/topology
+curl https://atomadic.tech/v1/agents/topology
 ```
 
 **Result:** A live, queryable topology of all registered agents with verified capabilities and trust scores.
@@ -141,7 +141,7 @@ curl https://aaaa-nexus.atomadictech.workers.dev/v1/agents/topology
 **Solution:** Score every incoming interaction with the Threat Scoring endpoint before processing.
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/threat/score \
+curl -X POST https://atomadic.tech/v1/threat/score \
   -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{

@@ -3,16 +3,16 @@
 > 129 formally verified AI safety API endpoints across 22 product families for autonomous agents.
 
 ## API Base URL
-https://aaaa-nexus.atomadictech.workers.dev
+https://atomadic.tech
 
 ## MCP Server
-https://aaaa-nexus.atomadictech.workers.dev/mcp
+https://atomadic.tech/mcp
 
 ## OpenAPI Spec
-https://aaaa-nexus.atomadictech.workers.dev/openapi.json
+https://atomadic.tech/openapi.json
 
 ## A2A Agent Card
-https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json
+https://atomadic.tech/.well-known/agent.json
 
 ## Free Endpoints (no auth required)
 - GET /health — Service health
@@ -163,7 +163,7 @@ https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json
 - x402: Autonomous USDC payments on Base L2 / Polygon / Solana
 
 ## Quick Test
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+curl https://atomadic.tech/v1/rng/quantum
 
 ## Full Documentation
 - llms-full.txt (in this repo)

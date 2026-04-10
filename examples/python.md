@@ -6,7 +6,7 @@
 import requests
 import os
 
-API_BASE = "https://aaaa-nexus.atomadictech.workers.dev"
+API_BASE = "https://atomadic.tech"
 API_KEY = os.environ.get("AAAA_NEXUS_API_KEY")
 
 
@@ -99,7 +99,7 @@ print(summary)
 import httpx
 import asyncio
 
-API_BASE = "https://aaaa-nexus.atomadictech.workers.dev"
+API_BASE = "https://atomadic.tech"
 
 
 async def main():

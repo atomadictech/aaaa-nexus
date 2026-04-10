@@ -1,10 +1,10 @@
 # AAAA Nexus — Formally Verified AI Safety Infrastructure
 
-[![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://aaaa-nexus.atomadictech.workers.dev)
+[![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
-[![Endpoints](https://img.shields.io/badge/endpoints-129-blue)](https://aaaa-nexus.atomadictech.workers.dev/openapi.json)
-[![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://aaaa-nexus.atomadictech.workers.dev/mcp)
-[![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json)
+[![Endpoints](https://img.shields.io/badge/endpoints-129-blue)](https://atomadic.tech/openapi.json)
+[![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://atomadic.tech/mcp)
+[![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://atomadic.tech/.well-known/agent.json)
 [![CI Verification](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml/badge.svg)](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml)
 [![License](https://img.shields.io/badge/license-CC%20BY--ND%204.0-lightgrey)](./LICENSE)
 
@@ -19,7 +19,7 @@ Production-grade infrastructure for autonomous agents with built-in x402 USDC mi
 ## Try It Now (Zero Setup)
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+curl https://atomadic.tech/v1/rng/quantum
 ```
 
 That's it. No signup, no API key, no SDK. You just got a cryptographically verified random number from a formally verified system.
@@ -41,9 +41,9 @@ That's it. No signup, no API key, no SDK. You just got a cryptographically verif
 **More free endpoints:**
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/health
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/entropy
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
+curl https://atomadic.tech/health
+curl https://atomadic.tech/v1/oracle/entropy
+curl -X POST https://atomadic.tech/v1/agents/register \
   -H "Content-Type: application/json" \
   -d '{"agent_id": "my-agent", "capabilities": ["inference"]}'
 ```
@@ -162,7 +162,7 @@ See [`verify.sh`](./verify.sh) for the full script. [View CI results](https://gi
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }
@@ -182,7 +182,7 @@ No signup. No API keys. Agents pay autonomously with USDC.
 3. Retry with payment proof      -> Get result
 ```
 
-Or get an **API key** for bulk calls: https://aaaa-nexus.atomadictech.workers.dev/pay
+Or get an **API key** for bulk calls: https://atomadic.tech/pay
 
 ### Pricing
 
@@ -196,15 +196,15 @@ Fully compatible with Google A2A:
 
 ```bash
 # Discover capabilities
-curl https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json
+curl https://atomadic.tech/.well-known/agent.json
 
 # Register your agent
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
+curl -X POST https://atomadic.tech/v1/agents/register \
   -H "Content-Type: application/json" \
   -d '{"agent_id": "my-agent", "capabilities": ["inference"]}'
 
 # View swarm topology
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/agents/topology
+curl https://atomadic.tech/v1/agents/topology
 ```
 
 ---
@@ -264,12 +264,12 @@ See [`examples/responses/`](./examples/responses/) for sample API responses.
 
 | Resource | URL |
 |----------|-----|
-| **Live API** | https://aaaa-nexus.atomadictech.workers.dev |
-| **Get API Key** | https://aaaa-nexus.atomadictech.workers.dev/pay |
-| **OpenAPI Spec** | https://aaaa-nexus.atomadictech.workers.dev/openapi.json |
-| **MCP Server** | https://aaaa-nexus.atomadictech.workers.dev/mcp |
-| **A2A Agent Card** | https://aaaa-nexus.atomadictech.workers.dev/.well-known/agent.json |
-| **Health / Status** | https://aaaa-nexus.atomadictech.workers.dev/health |
+| **Live API** | https://atomadic.tech |
+| **Get API Key** | https://atomadic.tech/pay |
+| **OpenAPI Spec** | https://atomadic.tech/openapi.json |
+| **MCP Server** | https://atomadic.tech/mcp |
+| **A2A Agent Card** | https://atomadic.tech/.well-known/agent.json |
+| **Health / Status** | https://atomadic.tech/health |
 
 ---
 

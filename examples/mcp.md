@@ -10,7 +10,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }
@@ -26,7 +26,7 @@ Add to `~/.claude/claude_code_config.json`:
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }
@@ -40,7 +40,7 @@ Add to your Cursor MCP settings:
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }
@@ -66,5 +66,5 @@ Once connected, these tools are available:
 
 ```bash
 # Check MCP endpoint is responsive
-curl https://aaaa-nexus.atomadictech.workers.dev/mcp
+curl https://atomadic.tech/mcp
 ```

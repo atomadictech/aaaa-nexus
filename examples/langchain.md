@@ -9,7 +9,7 @@ from langchain.tools import StructuredTool
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 import requests
 
-API_BASE = "https://aaaa-nexus.atomadictech.workers.dev"
+API_BASE = "https://atomadic.tech"
 API_KEY = "YOUR_KEY"
 
 

@@ -8,7 +8,7 @@ Use AAAA Nexus in AutoGen multi-agent conversations.
 import requests
 from autogen import AssistantAgent, UserProxyAgent
 
-API_BASE = "https://aaaa-nexus.atomadictech.workers.dev"
+API_BASE = "https://atomadic.tech"
 API_KEY = "YOUR_KEY"
 
 

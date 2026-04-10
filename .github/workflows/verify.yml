@@ -28,6 +28,6 @@ jobs:
           echo "## Proof Verification Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Ran \`verify.sh\` against the live API at:" >> $GITHUB_STEP_SUMMARY
-          echo "https://aaaa-nexus.atomadictech.workers.dev" >> $GITHUB_STEP_SUMMARY
+          echo "https://atomadic.tech" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "See job output above for detailed results." >> $GITHUB_STEP_SUMMARY
