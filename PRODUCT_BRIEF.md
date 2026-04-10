@@ -47,5 +47,5 @@ Result: Agents either operate in isolated silos or risk Byzantine attacks and fi
 ## Contact
 
 - **Email:** atomadic@proton.me
-- **Live API:** https://aaaa-nexus.atomadictech.workers.dev
+- **Live API:** https://atomadic.tech
 - **GitHub:** https://github.com/atomadictech/aaaa-nexus

@@ -45,7 +45,7 @@ Buy credits once. Use across all endpoints. Credits never expire.
 | **Value** | $15 | 2,000 | $0.0075 |
 | **Bulk** | $49 | 7,500 | $0.0065 |
 
-Purchase at: https://aaaa-nexus.atomadictech.workers.dev/pay
+Purchase at: https://atomadic.tech/pay
 
 ## x402 Autonomous Payments
 

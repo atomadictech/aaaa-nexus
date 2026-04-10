@@ -15,7 +15,7 @@
 
 set -uo pipefail
 
-API_BASE="https://aaaa-nexus.atomadictech.workers.dev"
+API_BASE="https://atomadic.tech"
 VERBOSE=false
 CHECK=""
 PASSED=0

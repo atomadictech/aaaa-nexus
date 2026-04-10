@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev",
+      "url": "https://atomadic.tech",
       "description": "Production"
     }
   ],
@@ -22,7 +22,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "X-API-Key",
-        "description": "API key obtained from https://aaaa-nexus.atomadictech.workers.dev/pay"
+        "description": "API key obtained from https://atomadic.tech/pay"
       },
       "X402PaymentProof": {
         "type": "apiKey",

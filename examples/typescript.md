@@ -3,7 +3,7 @@
 ## Direct HTTP (No SDK)
 
 ```typescript
-const API_BASE = "https://aaaa-nexus.atomadictech.workers.dev";
+const API_BASE = "https://atomadic.tech";
 
 // Health check
 const health = await fetch(`${API_BASE}/health`).then(r => r.json());
@@ -75,7 +75,7 @@ console.log(inference);
 // {
 //   "mcpServers": {
 //     "aaaa-nexus": {
-//       "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+//       "url": "https://atomadic.tech/mcp"
 //     }
 //   }
 // }
@@ -85,7 +85,7 @@ import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
 const transport = new StreamableHTTPClientTransport(
-  new URL("https://aaaa-nexus.atomadictech.workers.dev/mcp")
+  new URL("https://atomadic.tech/mcp")
 );
 
 const client = new Client({ name: "my-app", version: "1.0.0" });

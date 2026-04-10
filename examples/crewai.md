@@ -9,7 +9,7 @@ from crewai import Agent, Task, Crew
 from crewai.tools import tool
 import requests
 
-API_BASE = "https://aaaa-nexus.atomadictech.workers.dev"
+API_BASE = "https://atomadic.tech"
 API_KEY = "YOUR_KEY"
 
 

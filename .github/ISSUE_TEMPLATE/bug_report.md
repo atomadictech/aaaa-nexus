@@ -17,7 +17,7 @@ What actually happens? Include the HTTP status code and response body.
 
 **Steps to reproduce**
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/... \
+curl -X POST https://atomadic.tech/... \
   -H "Content-Type: application/json" \
   -d '{...}'
 ```

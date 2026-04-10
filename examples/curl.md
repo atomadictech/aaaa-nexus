@@ -7,25 +7,25 @@ All examples use the live production endpoint.
 ### Health Check
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/health
+curl https://atomadic.tech/health
 ```
 
 ### Entropy Epoch Oracle
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/entropy
+curl https://atomadic.tech/v1/oracle/entropy
 ```
 
 ### Quantum RNG with Proof
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+curl https://atomadic.tech/v1/rng/quantum
 ```
 
 ### Register an Agent
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
+curl -X POST https://atomadic.tech/v1/agents/register \
   -H "Content-Type: application/json" \
   -d '{
     "agent_id": "my-agent-001",
@@ -36,23 +36,23 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
 ### View Agent Topology
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/agents/topology
+curl https://atomadic.tech/v1/agents/topology
 ```
 
 ### Poll Swarm Inbox
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/swarm/inbox
+curl https://atomadic.tech/v1/swarm/inbox
 ```
 
 ## Paid Endpoints (API Key)
 
-Get an API key at https://aaaa-nexus.atomadictech.workers.dev/pay
+Get an API key at https://atomadic.tech/pay
 
 ### Hallucination Oracle
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination \
+curl -X POST https://atomadic.tech/v1/oracle/hallucination \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -64,7 +64,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination
 ### RatchetGate — Register Session
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/register \
+curl -X POST https://atomadic.tech/v1/ratchet/register \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{"session_id": "sess-001"}'
@@ -73,7 +73,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/register \
 ### RatchetGate — Advance Session
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/advance \
+curl -X POST https://atomadic.tech/v1/ratchet/advance \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{"session_id": "sess-001"}'
@@ -82,7 +82,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/ratchet/advance \
 ### Identity Verification
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/identity/verify \
+curl -X POST https://atomadic.tech/v1/identity/verify \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{"agent_id": "my-agent-001"}'
@@ -91,7 +91,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/identity/verify \
 ### Threat Scoring
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/threat/score \
+curl -X POST https://atomadic.tech/v1/threat/score \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -103,7 +103,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/threat/score \
 ### Compliance Check
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/compliance/check \
+curl -X POST https://atomadic.tech/v1/compliance/check \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -116,7 +116,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/compliance/check \
 ### Chat Inference (with Hallucination Guard)
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/inference \
+curl -X POST https://atomadic.tech/v1/inference \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -127,7 +127,7 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/inference \
 ### Text Summarization
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/text/summarize \
+curl -X POST https://atomadic.tech/v1/text/summarize \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -141,7 +141,7 @@ When calling a paid endpoint without an API key, you receive a 402 with payment 
 
 ```bash
 # Step 1: Call paid endpoint — get 402 with payment details
-curl -v -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination \
+curl -v -X POST https://atomadic.tech/v1/oracle/hallucination \
   -H "Content-Type: application/json" \
   -d '{"claim": "test"}'
 # → HTTP 402 with payment header
@@ -149,7 +149,7 @@ curl -v -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucinat
 # Step 2: Send USDC payment on Base L2 to the treasury address
 
 # Step 3: Retry with payment proof
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination \
+curl -X POST https://atomadic.tech/v1/oracle/hallucination \
   -H "Content-Type: application/json" \
   -H "X-Payment-Proof: <base64-encoded-proof>" \
   -d '{"claim": "test"}'

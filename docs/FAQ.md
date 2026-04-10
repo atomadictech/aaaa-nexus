@@ -21,7 +21,7 @@ x402 is an HTTP-native micropayment protocol. When you call a paid endpoint with
 <details>
 <summary><strong>Do I need cryptocurrency to use this?</strong></summary>
 
-No. You can use a traditional API key (get one at https://aaaa-nexus.atomadictech.workers.dev/pay). Crypto (USDC) is only needed for x402 autonomous payments — useful when agents need to pay without human intervention.
+No. You can use a traditional API key (get one at https://atomadic.tech/pay). Crypto (USDC) is only needed for x402 autonomous payments — useful when agents need to pay without human intervention.
 </details>
 
 <details>
@@ -52,7 +52,7 @@ Yes. Several endpoints are completely free with no rate limits: health check, en
 <details>
 <summary><strong>What happens if the API goes down?</strong></summary>
 
-Check status at https://aaaa-nexus.atomadictech.workers.dev/health. The API runs on a global edge network with sub-50ms latency. For enterprise SLA guarantees, contact atomadic@proton.me.
+Check status at https://atomadic.tech/health. The API runs on a global edge network with sub-50ms latency. For enterprise SLA guarantees, contact atomadic@proton.me.
 </details>
 
 <details>

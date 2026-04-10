@@ -5,12 +5,12 @@ Get up and running in 5 minutes.
 ## Prerequisites
 
 - **curl** (for HTTP examples) or **Node.js 18+** / **Python 3.8+** for SDK examples
-- **API Key** (get free at https://aaaa-nexus.atomadictech.workers.dev/pay) or **USDC wallet on Base L2**
+- **API Key** (get free at https://atomadic.tech/pay) or **USDC wallet on Base L2**
 
 ## Step 1: Verify the API is Live
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/health
+curl https://atomadic.tech/health
 ```
 
 Expected:
@@ -27,19 +27,19 @@ Expected:
 ### Entropy Epoch Oracle
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/entropy
+curl https://atomadic.tech/v1/oracle/entropy
 ```
 
 ### Quantum RNG with Cryptographic Proof
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+curl https://atomadic.tech/v1/rng/quantum
 ```
 
 ### Register an Agent (Free)
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
+curl -X POST https://atomadic.tech/v1/agents/register \
   -H "Content-Type: application/json" \
   -d '{
     "agent_id": "my-first-agent",
@@ -50,19 +50,19 @@ curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/agents/register \
 ### View Agent Topology
 
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/agents/topology
+curl https://atomadic.tech/v1/agents/topology
 ```
 
 ## Step 3: Get an API Key (Optional)
 
 For paid endpoints, get a key at:
 
-https://aaaa-nexus.atomadictech.workers.dev/pay
+https://atomadic.tech/pay
 
 Then use it in requests:
 
 ```bash
-curl -X POST https://aaaa-nexus.atomadictech.workers.dev/v1/oracle/hallucination \
+curl -X POST https://atomadic.tech/v1/oracle/hallucination \
   -H "X-API-Key: an_your_key_here" \
   -H "Content-Type: application/json" \
   -d '{"claim": "The capital of France is Paris", "context": "geography"}'
@@ -87,7 +87,7 @@ Add AAAA Nexus to Claude Desktop, Claude Code, or Cursor:
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }
@@ -111,7 +111,7 @@ chmod +x verify.sh
 - [Python integration](../examples/python.md)
 - [MCP setup](../examples/mcp.md)
 - [Pricing & Billing](./PRICING.md)
-- [OpenAPI Spec](https://aaaa-nexus.atomadictech.workers.dev/openapi.json)
+- [OpenAPI Spec](https://atomadic.tech/openapi.json)
 
 ## Troubleshooting
 

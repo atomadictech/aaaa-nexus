@@ -4,12 +4,12 @@
 > Every safety guarantee is mathematically proved in Lean 4 — not benchmarked, not tested, proved.
 
 ## API Base URL
-https://aaaa-nexus.atomadictech.workers.dev
+https://atomadic.tech
 
 ## Protocols Supported
 - REST API (JSON over HTTPS)
-- MCP (Model Context Protocol) — https://aaaa-nexus.atomadictech.workers.dev/mcp
-- A2A (Agent-to-Agent, Google protocol) — https://aaaa-nexus.atomadictech.workers.dev/a2a
+- MCP (Model Context Protocol) — https://atomadic.tech/mcp
+- A2A (Agent-to-Agent, Google protocol) — https://atomadic.tech/a2a
 - x402 (HTTP 402 micropayment protocol with USDC)
 
 ## Complete Endpoint Reference
@@ -129,7 +129,7 @@ POST /v1/text/sentiment — $0.005/call
 
 ### API Key
 Header: X-API-Key: YOUR_KEY
-Get a key: https://aaaa-nexus.atomadictech.workers.dev/pay
+Get a key: https://atomadic.tech/pay
 
 ### x402 Autonomous Payments
 No signup required. Flow:
@@ -145,7 +145,7 @@ Add to claude_desktop_config.json or cursor settings:
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }

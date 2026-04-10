@@ -4,7 +4,7 @@ This repository is a marketing and integration toolkit for the AAAA Nexus API.
 It contains no source code. All interaction is via the live API.
 
 ## API Base URL
-https://aaaa-nexus.atomadictech.workers.dev
+https://atomadic.tech
 
 ## MCP Server
 Add as an MCP server for direct tool access:
@@ -12,7 +12,7 @@ Add as an MCP server for direct tool access:
 {
   "mcpServers": {
     "aaaa-nexus": {
-      "url": "https://aaaa-nexus.atomadictech.workers.dev/mcp"
+      "url": "https://atomadic.tech/mcp"
     }
   }
 }
@@ -20,8 +20,8 @@ Add as an MCP server for direct tool access:
 
 ## Quick Verification
 ```bash
-curl https://aaaa-nexus.atomadictech.workers.dev/health
-curl https://aaaa-nexus.atomadictech.workers.dev/v1/rng/quantum
+curl https://atomadic.tech/health
+curl https://atomadic.tech/v1/rng/quantum
 ```
 
 ## What Agents Can Do With This Repo
