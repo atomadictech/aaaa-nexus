@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use AAAA Nexus in your research, please cite it as below."
-title: "AAAA Nexus: Formally Verified AI Safety APIs"
+message: "If you use Atomadic in your research, please cite it as below."
+title: "Atomadic: Formally Verified AI Safety APIs"
 type: software
 authors:
   - name: "Atomadic Tech"
@@ -17,7 +17,7 @@ keywords:
   - x402
   - micropayments
 abstract: >-
-  AAAA Nexus provides 129 formally verified AI safety API endpoints
+  Atomadic provides 119+ formally verified AI safety API endpoints
   for autonomous agents, with built-in x402 USDC micropayments,
   MCP server support, and Google A2A protocol compatibility.
 date-released: "2026-04-08"

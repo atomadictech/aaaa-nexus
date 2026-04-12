@@ -1,6 +1,6 @@
-# MCP Server Setup — AAAA Nexus
+# MCP Server Setup — Atomadic
 
-Connect AAAA Nexus as an MCP server to any compatible client.
+Connect Atomadic as an MCP server to any compatible client.
 
 ## Claude Desktop
 
@@ -9,14 +9,14 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 ```json
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }
 }
 ```
 
-Restart Claude Desktop. AAAA Nexus tools will appear in the tools menu.
+Restart Claude Desktop. Atomadic tools will appear in the tools menu.
 
 ## Claude Code
 
@@ -25,7 +25,7 @@ Add to `~/.claude/claude_code_config.json`:
 ```json
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }
@@ -39,7 +39,7 @@ Add to your Cursor MCP settings:
 ```json
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }

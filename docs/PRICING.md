@@ -1,4 +1,4 @@
-# Pricing & Billing — AAAA Nexus
+# Pricing & Billing — Atomadic
 
 Transparent, pay-as-you-go pricing. Generous free tier. No hidden fees.
 

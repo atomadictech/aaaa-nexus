@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "AAAA Nexus API",
+    "name": "Atomadic API",
     "description": "Formally verified AI safety APIs for autonomous agents.\n\nEvery safety guarantee is mathematically proved in Lean 4 — not benchmarked, not tested, proved.\n\n**Authentication**\n- Free endpoints: no authentication required\n- Paid endpoints: set the `API_KEY` variable, or use x402 micropayment flow (see docs)\n\n**Variables**\n- `API_BASE`: base URL (default: https://atomadic.tech)\n- `API_KEY`: your API key (get one at /pay)\n\n**x402 Flow (keyless)**\n1. Call any paid endpoint without credentials\n2. Receive HTTP 402 with payment details\n3. Send USDC on Base L2, Polygon, or Solana\n4. Retry with `X-Payment-Proof` header",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
@@ -669,7 +669,7 @@
               "host": ["{{API_BASE}}"],
               "path": ["mcp"]
             },
-            "description": "Model Context Protocol (MCP) endpoint. Available tools: health, metrics, oracle_entropy, oracle_hallucination, ratchetgate_session, ratchetgate_register, ratchetgate_advance, inference, inference_stream.\n\nConfigure in claude_desktop_config.json:\n```json\n{\n  \"mcpServers\": {\n    \"aaaa-nexus\": {\n      \"url\": \"https://atomadic.tech/mcp\"\n    }\n  }\n}\n```"
+            "description": "Model Context Protocol (MCP) endpoint. Available tools: health, metrics, oracle_entropy, oracle_hallucination, ratchetgate_session, ratchetgate_register, ratchetgate_advance, inference, inference_stream.\n\nConfigure in claude_desktop_config.json:\n```json\n{\n  \"mcpServers\": {\n    \"atomadic\": {\n      \"url\": \"https://atomadic.tech/mcp\"\n    }\n  }\n}\n```"
           },
           "response": []
         },

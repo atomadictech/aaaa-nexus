@@ -1,4 +1,4 @@
-# Python Integration — AAAA Nexus API
+# Python Integration — Atomadic API
 
 ## Using `requests`
 
@@ -7,7 +7,7 @@ import requests
 import os
 
 API_BASE = "https://atomadic.tech"
-API_KEY = os.environ.get("AAAA_NEXUS_API_KEY")
+API_KEY = os.environ.get("ATOMADIC_API_KEY")
 
 
 # --- Free Endpoints ---

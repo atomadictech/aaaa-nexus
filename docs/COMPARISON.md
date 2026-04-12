@@ -1,8 +1,8 @@
-# How AAAA Nexus Compares
+# How Atomadic Compares
 
 ## Verification Method
 
-| Approach | AAAA Nexus | Benchmark-Based Tools | Heuristic Guardrails |
+| Approach | Atomadic | Benchmark-Based Tools | Heuristic Guardrails |
 |----------|-----------|----------------------|---------------------|
 | **Safety guarantee** | Mathematical proof | Statistical confidence | Rule-based heuristic |
 | **Coverage** | All possible inputs | Sampled test cases | Known patterns only |
@@ -12,7 +12,7 @@
 
 ## Feature Comparison
 
-| Feature | AAAA Nexus | Typical Safety API | Generic LLM API |
+| Feature | Atomadic | Typical Safety API | Generic LLM API |
 |---------|-----------|-------------------|-----------------|
 | **Formal verification** | Yes | No | No |
 | **Hallucination detection** | Proved upper bound | Confidence score | None |
@@ -27,7 +27,7 @@
 
 ## Payment Model
 
-| Model | AAAA Nexus | Traditional APIs |
+| Model | Atomadic | Traditional APIs |
 |-------|-----------|-----------------|
 | **No-signup option** | Yes (x402) | No |
 | **Agent-autonomous payments** | Yes | No |
@@ -38,7 +38,7 @@
 
 ## Protocol Support
 
-| Protocol | AAAA Nexus | Others |
+| Protocol | Atomadic | Others |
 |----------|-----------|--------|
 | **REST** | Yes | Yes |
 | **MCP** | Native server | Plugin/adapter |
@@ -46,7 +46,7 @@
 | **x402** | Native | No |
 | **OpenAPI** | Full spec served | Varies |
 
-## When to Use AAAA Nexus
+## When to Use Atomadic
 
 - You need **mathematical certainty**, not statistical confidence
 - Your agents operate **autonomously** and need to pay for services without humans

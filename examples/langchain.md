@@ -1,6 +1,6 @@
-# LangChain Integration — AAAA Nexus
+# LangChain Integration — Atomadic
 
-Use AAAA Nexus endpoints as LangChain tools in your agent chains.
+Use Atomadic endpoints as LangChain tools in your agent chains.
 
 ## Hallucination Oracle Tool
 
@@ -84,7 +84,7 @@ from langchain_openai import ChatOpenAI
 llm = ChatOpenAI(model="gpt-4")
 tools = [hallucination_tool, verirand_tool, threat_tool]
 
-# Create agent with AAAA Nexus tools
+# Create agent with Atomadic tools
 agent = create_openai_tools_agent(llm, tools, prompt)
 executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
@@ -98,6 +98,6 @@ result = executor.invoke({
 If you're using LangChain with MCP support, you can connect directly:
 
 ```python
-# Add AAAA Nexus as MCP server in your LangChain MCP config
+# Add Atomadic as MCP server in your LangChain MCP config
 # All tools become available automatically
 ```

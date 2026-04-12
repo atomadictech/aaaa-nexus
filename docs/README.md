@@ -7,7 +7,7 @@
 - [Pricing & Billing](./PRICING.md) — Tiers, credit packs, x402 rates
 - [FAQ](./FAQ.md) — Common questions answered
 - [Glossary](./GLOSSARY.md) — Formal verification and protocol terminology
-- [Comparison](./COMPARISON.md) — How AAAA Nexus compares to alternatives
+- [Comparison](./COMPARISON.md) — How Atomadic compares to alternatives
 
 ## Guides
 - [Use Cases](./USE_CASES.md) — 7 concrete scenarios with code

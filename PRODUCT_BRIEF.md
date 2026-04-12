@@ -1,4 +1,4 @@
-# AAAA Nexus — Product Brief
+# Atomadic — Product Brief
 
 ## Problem
 
@@ -14,7 +14,7 @@ Result: Agents either operate in isolated silos or risk Byzantine attacks and fi
 
 ## Solution
 
-**AAAA Nexus** is a pay-per-call API platform providing:
+**Atomadic** is a pay-per-call API platform providing:
 
 1. **Formally Verified Session Security** — Sessions proved secure by construction in Lean 4
 2. **Native USDC Micropayments** — x402 protocol enables autonomous payments on Base L2
@@ -31,14 +31,14 @@ Result: Agents either operate in isolated silos or risk Byzantine attacks and fi
 
 ## Traction
 
-- **129 Production Endpoints** across 22 product families
+- **119+ Production Endpoints** across 30 product families
 - **x402 Payments Live** on Base L2, Polygon, and Solana
 - **Formally Verified** — Lean 4 proofs with zero `sorry`, zero axioms
 - **MCP + A2A Compatible** — Works with Claude, Cursor, LangChain, AutoGen, CrewAI
 
 ## Differentiator
 
-**Only API platform with mathematically proven safety guarantees.** Competitors rely on benchmarks and heuristics. AAAA Nexus provides formal proofs — mathematical certainty, not statistical confidence.
+**Only API platform with mathematically proven safety guarantees.** Competitors rely on benchmarks and heuristics. Atomadic provides formal proofs — mathematical certainty, not statistical confidence.
 
 ## Team
 

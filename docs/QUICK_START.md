@@ -1,4 +1,4 @@
-# Quick Start Guide — AAAA Nexus
+# Quick Start Guide — Atomadic
 
 Get up and running in 5 minutes.
 
@@ -81,12 +81,12 @@ No signup required. Any USDC wallet on Base L2 works:
 
 ## Step 5: Add as MCP Server
 
-Add AAAA Nexus to Claude Desktop, Claude Code, or Cursor:
+Add Atomadic to Claude Desktop, Claude Code, or Cursor:
 
 ```json
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }

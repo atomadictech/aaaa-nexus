@@ -1,4 +1,4 @@
-# Use Cases — AAAA Nexus
+# Use Cases — Atomadic
 
 ## 1. Verify LLM Outputs Before Acting
 

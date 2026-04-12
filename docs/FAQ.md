@@ -1,4 +1,4 @@
-# FAQ — AAAA Nexus
+# FAQ — Atomadic
 
 <details>
 <summary><strong>Is this actually formally verified?</strong></summary>
@@ -27,7 +27,7 @@ No. You can use a traditional API key (get one at https://atomadic.tech/pay). Cr
 <details>
 <summary><strong>How does this compare to OpenAI's moderation API?</strong></summary>
 
-OpenAI's moderation API uses statistical models to flag harmful content. AAAA Nexus provides mathematically proved safety bounds — not a confidence score, but a certified upper limit on hallucination probability. Different approach, different guarantee level.
+OpenAI's moderation API uses statistical models to flag harmful content. Atomadic provides mathematically proved safety bounds — not a confidence score, but a certified upper limit on hallucination probability. Different approach, different guarantee level.
 </details>
 
 <details>
@@ -64,7 +64,7 @@ Enterprise customers get custom SLA guarantees. Contact atomadic@proton.me for d
 <details>
 <summary><strong>Can I run this on-premise?</strong></summary>
 
-Not currently. AAAA Nexus is a managed API service. Enterprise on-premise deployment may be available in the future — contact atomadic@proton.me to discuss.
+Not currently. Atomadic is a managed API service. Enterprise on-premise deployment may be available in the future — contact atomadic@proton.me to discuss.
 </details>
 
 <details>

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# AAAA Nexus — Proof Verifier
+# Atomadic — Proof Verifier
 # Independently verify formal verification claims against the live API.
 # No source code required — all checks hit the production system.
 #
@@ -31,7 +31,7 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 usage() {
-  echo "AAAA Nexus Proof Verifier"
+  echo "Atomadic Proof Verifier"
   echo ""
   echo "Usage: $0 [OPTIONS]"
   echo ""
@@ -299,7 +299,7 @@ done
 
 echo ""
 echo -e "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${PURPLE}  AAAA Nexus — Proof Verifier${NC}"
+echo -e "${PURPLE}  Atomadic — Proof Verifier${NC}"
 echo -e "${PURPLE}  Target: ${API_BASE}${NC}"
 echo -e "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 

@@ -2,7 +2,7 @@
 
 ## Reporting Vulnerabilities
 
-If you discover a security vulnerability in the AAAA Nexus API, please report it responsibly.
+If you discover a security vulnerability in the Atomadic API, please report it responsibly.
 
 **Email:** atomadic@proton.me
 
@@ -14,7 +14,7 @@ We will acknowledge receipt within 48 hours and provide an initial assessment wi
 
 The following are in scope for security reports:
 
-- AAAA Nexus API endpoints (`atomadic.tech`)
+- Atomadic API endpoints (`atomadic.tech`)
 - Authentication and authorization bypasses
 - x402 payment flow vulnerabilities
 - Session security (RatchetGate) issues

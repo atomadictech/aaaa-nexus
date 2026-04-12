@@ -1,4 +1,4 @@
-# cURL Examples — AAAA Nexus API
+# cURL Examples — Atomadic API
 
 All examples use the live production endpoint.
 

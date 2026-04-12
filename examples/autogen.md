@@ -1,6 +1,6 @@
-# AutoGen Integration — AAAA Nexus
+# AutoGen Integration — Atomadic
 
-Use AAAA Nexus in AutoGen multi-agent conversations.
+Use Atomadic in AutoGen multi-agent conversations.
 
 ## Function Definitions
 
@@ -23,7 +23,7 @@ def check_hallucination(claim: str, context: str = "general") -> dict:
 
 
 def register_agent(agent_id: str, capabilities: list) -> dict:
-    """Register an agent in the AAAA Nexus swarm topology."""
+    """Register an agent in the Atomadic swarm topology."""
     resp = requests.post(
         f"{API_BASE}/v1/agents/register",
         headers={"Content-Type": "application/json"},
@@ -73,7 +73,7 @@ llm_config = {
         },
         {
             "name": "register_agent",
-            "description": "Register agent in the AAAA Nexus swarm",
+            "description": "Register agent in the Atomadic swarm",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -100,7 +100,7 @@ llm_config = {
 assistant = AssistantAgent(
     name="safety_assistant",
     system_message=(
-        "You are an AI safety assistant with access to AAAA Nexus tools. "
+        "You are an AI safety assistant with access to Atomadic tools. "
         "Always verify factual claims using check_hallucination before "
         "presenting them as facts."
     ),

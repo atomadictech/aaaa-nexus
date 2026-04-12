@@ -1,8 +1,8 @@
-# AAAA Nexus — Formally Verified AI Safety Infrastructure
+# Atomadic — Formally Verified AI Safety Infrastructure
 
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
-[![Endpoints](https://img.shields.io/badge/endpoints-129-blue)](https://atomadic.tech/openapi.json)
+[![Endpoints](https://img.shields.io/badge/endpoints-119%2B-blue)](https://atomadic.tech/openapi.json)
 [![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://atomadic.tech/mcp)
 [![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://atomadic.tech/.well-known/agent.json)
 [![CI Verification](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml/badge.svg)](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml)
@@ -65,7 +65,7 @@ Autonomous agents operating without human oversight face six critical infrastruc
 
 ## The Solution
 
-**129 API endpoints across 22 product families** — every safety claim backed by formal proofs in Lean 4.
+**119+ API endpoints across 30 product families** — every safety claim backed by formal proofs in Lean 4.
 
 ### Core Products
 
@@ -94,24 +94,24 @@ Autonomous agents operating without human oversight face six critical infrastruc
 ```mermaid
 sequenceDiagram
     participant Agent
-    participant AAAA Nexus
+    participant Atomadic
     participant USDC
 
-    Note over Agent,AAAA Nexus: Free Endpoints (no auth)
-    Agent->>AAAA Nexus: GET /v1/rng/quantum
-    AAAA Nexus-->>Agent: { random, proof, verified: true }
+    Note over Agent,Atomadic: Free Endpoints (no auth)
+    Agent->>Atomadic: GET /v1/rng/quantum
+    Atomadic-->>Agent: { random, proof, verified: true }
 
     Note over Agent,USDC: Paid Endpoints (x402 flow)
-    Agent->>AAAA Nexus: POST /v1/oracle/hallucination
-    AAAA Nexus-->>Agent: HTTP 402 { amount, treasury, chain }
+    Agent->>Atomadic: POST /v1/oracle/hallucination
+    Atomadic-->>Agent: HTTP 402 { amount, treasury, chain }
     Agent->>USDC: Send $0.002 USDC
-    Agent->>AAAA Nexus: POST /v1/oracle/hallucination + proof
-    AAAA Nexus-->>Agent: { hallucination_bound, verified: true }
+    Agent->>Atomadic: POST /v1/oracle/hallucination + proof
+    Atomadic-->>Agent: { hallucination_bound, verified: true }
 ```
 
 ```mermaid
 graph LR
-    A[Your Agent] -->|MCP / REST / A2A| B[AAAA Nexus API]
+    A[Your Agent] -->|MCP / REST / A2A| B[Atomadic API]
     B --> C[Hallucination Oracle]
     B --> D[RatchetGate]
     B --> E[VeriRand]
@@ -161,7 +161,7 @@ See [`verify.sh`](./verify.sh) for the full script. [View CI results](https://gi
 ```json
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }
@@ -220,15 +220,15 @@ curl https://atomadic.tech/v1/agents/topology
 | **LangChain** | [examples/langchain.md](./examples/langchain.md) | 10 min |
 | **CrewAI** | [examples/crewai.md](./examples/crewai.md) | 10 min |
 | **AutoGen** | [examples/autogen.md](./examples/autogen.md) | 10 min |
-| **Postman** | [Import collection](./examples/aaaa-nexus.postman_collection.json) | 1 min |
+| **Postman** | [Import collection](./examples/atomadic.postman_collection.json) | 1 min |
 
 See [`examples/responses/`](./examples/responses/) for sample API responses.
 
 ---
 
-## How AAAA Nexus Compares
+## How Atomadic Compares
 
-| | AAAA Nexus | Benchmark-Based | Heuristic Guardrails |
+| | Atomadic | Benchmark-Based | Heuristic Guardrails |
 |---|-----------|----------------|---------------------|
 | **Safety proof** | Mathematical (Lean 4) | Statistical | Rule-based |
 | **Coverage** | All inputs | Sampled cases | Known patterns |
@@ -249,7 +249,7 @@ See [`examples/responses/`](./examples/responses/) for sample API responses.
 | [Use Cases](./docs/USE_CASES.md) | 7 concrete scenarios with code |
 | [FAQ](./docs/FAQ.md) | Common questions answered |
 | [Glossary](./docs/GLOSSARY.md) | Formal verification terminology |
-| [Comparison](./docs/COMPARISON.md) | AAAA Nexus vs alternatives |
+| [Comparison](./docs/COMPARISON.md) | Atomadic vs alternatives |
 | [Product Brief](./PRODUCT_BRIEF.md) | What we're building and why |
 | [Changelog](./CHANGELOG.md) | Version history |
 | [OpenAPI Spec](./openapi.json) | Machine-readable API spec |

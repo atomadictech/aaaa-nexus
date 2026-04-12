@@ -1,13 +1,13 @@
 # Changelog
 
-All notable changes to the AAAA Nexus API are documented here.
+All notable changes to the Atomadic API are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [0.5.0] — 2026-04-08
 
 ### Added
-- 129 production endpoints across 22 product families
+- 119+ production endpoints across 30 product families
 - Hallucination Oracle with formally verified upper bounds
 - RatchetGate session re-keying (mitigates session fixation attacks)
 - VeriRand quantum RNG with cryptographic proofs

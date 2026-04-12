@@ -1,4 +1,4 @@
-# TypeScript Integration — AAAA Nexus API
+# TypeScript Integration — Atomadic API
 
 ## Direct HTTP (No SDK)
 
@@ -32,7 +32,7 @@ console.log(agent);
 ## With API Key
 
 ```typescript
-const API_KEY = process.env.AAAA_NEXUS_API_KEY!;
+const API_KEY = process.env.ATOMADIC_API_KEY!;
 
 async function nexusPost(path: string, body: object) {
   const res = await fetch(`${API_BASE}${path}`, {
@@ -74,7 +74,7 @@ console.log(inference);
 // For Claude Desktop or Cursor, add to your MCP config:
 // {
 //   "mcpServers": {
-//     "aaaa-nexus": {
+//     "atomadic": {
 //       "url": "https://atomadic.tech/mcp"
 //     }
 //   }

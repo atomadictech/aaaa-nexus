@@ -1,4 +1,4 @@
-# CrewAI Integration — AAAA Nexus
+# CrewAI Integration — Atomadic
 
 Build CrewAI agents backed by formally verified safety tools.
 

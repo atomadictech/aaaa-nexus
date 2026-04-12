@@ -1,6 +1,6 @@
-# Contributing to AAAA Nexus
+# Contributing to Atomadic
 
-Thank you for your interest in AAAA Nexus!
+Thank you for your interest in Atomadic!
 
 ## About This Repository
 

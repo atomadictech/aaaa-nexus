@@ -1,4 +1,4 @@
-# AAAA Nexus — Full LLM Reference
+# Atomadic — Full LLM Reference
 
 > Formally verified AI safety APIs for autonomous agents.
 > Every safety guarantee is mathematically proved in Lean 4 — not benchmarked, not tested, proved.
@@ -144,7 +144,7 @@ No signup required. Flow:
 Add to claude_desktop_config.json or cursor settings:
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }

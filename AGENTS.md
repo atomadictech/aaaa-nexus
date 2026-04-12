@@ -1,6 +1,6 @@
-# AGENTS.md — AAAA Nexus
+# AGENTS.md — Atomadic
 
-This repository is a marketing and integration toolkit for the AAAA Nexus API.
+This repository is a marketing and integration toolkit for the Atomadic API.
 It contains no source code. All interaction is via the live API.
 
 ## API Base URL
@@ -11,7 +11,7 @@ Add as an MCP server for direct tool access:
 ```json
 {
   "mcpServers": {
-    "aaaa-nexus": {
+    "atomadic": {
       "url": "https://atomadic.tech/mcp"
     }
   }

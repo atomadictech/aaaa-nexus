@@ -1,6 +1,6 @@
-# AAAA Nexus
+# Atomadic
 
-> 129 formally verified AI safety API endpoints across 22 product families for autonomous agents.
+> 119+ formally verified AI safety API endpoints across 30 product families for autonomous agents.
 
 ## API Base URL
 https://atomadic.tech

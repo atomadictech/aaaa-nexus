@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "AAAA Nexus API",
+    "title": "Atomadic API",
     "version": "0.5.0",
     "description": "Formally verified AI safety APIs for autonomous agents. Supports REST, MCP, A2A (Google protocol), and x402 micropayment protocol.",
     "contact": {
