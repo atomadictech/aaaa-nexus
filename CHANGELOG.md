@@ -4,10 +4,55 @@ All notable changes to the AAAA Nexus API are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.5.1] — 2026-04-12
+
+### Added
+- **DeFi Suite** — 9 formally verified DeFi endpoints:
+  - `/v1/defi/optimize` — LP parameter optimization (DFP-100-OptimalTick theorem)
+  - `/v1/defi/risk-score` — Formally bounded risk scoring (DFI-101, max drawdown ≤12.5%)
+  - `/v1/defi/oracle-verify` — Oracle manipulation detection (OGD-100-ManipulationBound)
+  - `/v1/defi/liquidation-check` — Pre-liquidation health check (LQS-100-LiquidationBound)
+  - `/v1/defi/bridge-verify` — Cross-chain bridge integrity (BRP-100-BridgeIntegrity)
+  - `/v1/defi/contract-audit` — Smart contract audit certificate (CVR-100-AuditBound)
+  - `/v1/defi/yield-optimize` — Optimal yield allocation (YLD-100-YieldConvergence)
+  - `/v1/vrf/draw` — On-chain verifiable randomness for gaming/lotteries (VRF-100)
+  - `/v1/vrf/verify-draw` — Player-verifiable draw proof retrieval (VRF-101)
+- **Compliance Suite** — 12 formally verified compliance endpoints:
+  - `/v1/compliance/check` — Multi-framework check (EU AI Act + NIST RMF + ISO 42001)
+  - `/v1/compliance/eu-ai-act` — EU AI Act conformity certificate (Annex IV auto-generated)
+  - `/v1/compliance/fairness` — Formal bias bounds (FNS-100-FairnessBound)
+  - `/v1/compliance/explain` — Explainability certificate (XPL-100-ExplainBound)
+  - `/v1/compliance/lineage` — Data provenance chain (LIN-100-ChainIntegrity)
+  - `/v1/compliance/oversight` — Human oversight event log (EU AI Act Art. 14)
+  - `/v1/compliance/oversight/history` — Oversight audit log query
+  - `/v1/compliance/incident` — AI incident reporting (EU AI Act Art. 73)
+  - `/v1/compliance/incidents` — Incident registry query
+  - `/v1/compliance/transparency` — Auto-generated transparency report (Art. 13)
+  - `/v1/drift/check` — DriftGuard PSI monitoring (DRG-100-DriftBound, ≤0.20 at 95% CI)
+  - `/v1/drift/certificate` — Signed PDF drift certificate for regulatory submissions
+- **Trust Oracle** — `/v1/trust/score` and `/v1/trust/history` (TCM-100-BoundedMonotonicity)
+- **Dynamic x402 percentage pricing** — DeFi fees now scale with transaction value (no cap):
+  - VRF draw: $0.01 + 0.5% of pot_value_usd
+  - Oracle verify: $0.04 + 0.1% of tvl_at_risk
+  - LP optimize: $0.08 + 0.2% of position size
+  - Liquidation check: $0.04 + 1% of net equity
+- **Free trial expanded** to ALL paid endpoints — 3 calls/IP/day, 2s abuse-prevention delay
+- **Mobile navigation** — slide-in drawer, overlay, hamburger↔X animation, Escape key dismiss
+- **/defi and /compliance pages** — full product pages with usage guides for all endpoints
+
+### Changed
+- Credit pack starter tier: $4 → $8 (500 calls)
+- Dynamic fee encoded stateless in x402 nonce bytes 20-27 (no KV storage required)
+
+### Fixed
+- `/defi` and `/compliance` routes returning 404 (missing from router Marketing arm)
+- Bridge verify returning 500 on GET requests
+- 20 Rust compiler warnings resolved
+
 ## [0.5.0] — 2026-04-08
 
 ### Added
-- 129 production endpoints across 22 product families
+- 200 production endpoints across 22 product families
 - Hallucination Oracle with formally verified upper bounds
 - RatchetGate session re-keying (mitigates session fixation attacks)
 - VeriRand quantum RNG with cryptographic proofs

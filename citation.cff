@@ -17,8 +17,9 @@ keywords:
   - x402
   - micropayments
 abstract: >-
-  AAAA Nexus provides 129 formally verified AI safety API endpoints
-  for autonomous agents, with built-in x402 USDC micropayments,
-  MCP server support, and Google A2A protocol compatibility.
+  AAAA Nexus provides 200+ formally verified API endpoints across 30 product
+  families — AI safety, DeFi infrastructure, and EU AI Act compliance — for
+  autonomous agents. Built-in x402 USDC micropayments on Base L2, MCP server
+  support, and Google A2A protocol compatibility.
 date-released: "2026-04-08"
 version: "0.5.0"

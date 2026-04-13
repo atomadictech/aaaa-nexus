@@ -1,6 +1,6 @@
 # AAAA Nexus
 
-> 129 formally verified AI safety API endpoints across 22 product families for autonomous agents.
+> 200+ formally verified AI safety + DeFi API endpoints across 30 product families. Mathematical proofs, not benchmarks.
 
 ## API Base URL
 https://atomadic.tech
@@ -14,162 +14,207 @@ https://atomadic.tech/openapi.json
 ## A2A Agent Card
 https://atomadic.tech/.well-known/agent.json
 
-## Free Endpoints (no auth required)
-- GET /health — Service health
-- GET /status — Status page
-- GET /v1/rng/quantum — Quantum RNG with cryptographic proof
-- GET /v1/rng/verify — Verify an RNG proof
-- GET /v1/rng/entropy — Raw entropy
-- GET /v1/oracle/entropy — Entropy epoch oracle
-- GET /v1/oracle/entropy/history — Epoch history
-- GET /v1/agents/topology — Live agent topology
-- GET /v1/swarm/inbox — Poll swarm messages
-- GET /v1/swarm/topology — Swarm topology view
-- GET /v1/swarm/peers — List swarm peers
-- GET /v1/inference/models — Available inference models
-- GET /v1/compress/stats — Compression stats
-- GET /v1/shield/status — Shield status
-- GET /v1/threat/history — Threat history
-- POST /v1/agents/register — Register agent (A2A compatible)
-- GET /.well-known/agent.json — A2A agent card
-- GET /.well-known/mcp.json — MCP manifest
+## Free Trial
+3 calls/IP/day on every paid endpoint. No API key required. 2s delay (paid calls: no delay).
 
-## Paid Endpoints — Oracle (x402 or API key)
-- POST /v1/oracle/hallucination — Hallucination upper bound ($0.002)
-- POST /v1/oracle/bias — Bias detection
-- POST /v1/oracle/toxicity — Toxicity scoring
-- POST /v1/oracle/safety — Safety gate
-- POST /v1/oracle/risk — Risk assessment
-- POST /v1/oracle/compliance — Compliance oracle
-- POST /v1/oracle/trust — Trust phase oracle
-- POST /v1/oracle/trust-phase — Trust phase with depth
+## Pricing
+- Credit packs: $8 (500 calls) / $15 (2,500 calls) / $49 (10,000 calls) — never expire
+- Pay via Stripe (card) or USDC on Base L2 (chain ID 8453)
+- API key header: X-API-Key
+- x402 micropayments: PAYMENT-SIGNATURE header (automated agent payments)
 
-## Paid Endpoints — RNG
-- POST /v1/rng/seeded — Seeded RNG ($0.001)
-- POST /v1/rng/cryptographic — CSPRNG ($0.005)
-- POST /v1/rng/batch — Batch RNG
-- POST /v1/rng/stream — Streaming RNG
+## Free Endpoints (no auth)
+- GET /health
+- GET /v1/oracle/entropy
+- GET /v1/agents/topology
+- GET /.well-known/agent.json
+- GET /openapi.json
 
-## Paid Endpoints — RatchetGate
-- POST /v1/ratchet/register — Session security ($0.002)
-- POST /v1/ratchet/advance — Advance ratchet ($0.002)
-- POST /v1/ratchet/probe — Probe session
-- POST /v1/ratchet/status — Session status
-- POST /v1/ratchet/revoke — Revoke session
-- POST /v1/ratchet/verify — Verify session
-- POST /v1/ratchet/list — List sessions
+## DeFi Suite — Formally Verified DeFi Infrastructure
 
-## Paid Endpoints — Identity
-- POST /v1/identity/verify — Sybil-resistant identity ($0.020)
-- POST /v1/identity/register — Register identity
-- POST /v1/identity/lookup — Lookup identity
-- POST /v1/identity/revoke — Revoke identity
-- POST /v1/identity/challenge — Challenge identity
+### LP Parameter Optimization — DFP-100-OptimalTick
+POST /v1/defi/optimize
+Fee: $0.08 + 0.2% of position size
+Body: {"protocol":"uniswap_v3","position":{"token_a":"ETH","token_b":"USDC","amount_usd":50000},"risk_tolerance":"medium"}
 
-## Paid Endpoints — Threat
-- POST /v1/threat/score — Multi-vector threat score ($0.003)
-- POST /v1/threat/analyze — Deep threat analysis
-- POST /v1/threat/report — Report threat
-- POST /v1/threat/block — Block agent
+### Risk Scoring — DFI-101-RiskScoreBound
+POST /v1/defi/risk-score
+Fee: $0.08/call (flat)
+Body: {"protocol":"aave","position":{"token_a":"ETH","token_b":"USDC","amount_usd":50000,"leverage":2.5},"market_conditions":{"volatility":"medium"}}
 
-## Paid Endpoints — Compliance
-- POST /v1/compliance/check — GDPR/CCPA check ($0.005)
-- POST /v1/compliance/audit — Compliance audit
-- POST /v1/compliance/report — Compliance report
-- POST /v1/compliance/policy — Policy check
-- POST /v1/compliance/scan — Compliance scan
+### Oracle Guard — OGD-100-ManipulationBound
+POST /v1/defi/oracle-verify
+Fee: $0.04 + 0.1% of tvl_at_risk
+Body: {"oracle_address":"0x...","price_feed":3421.50,"reference_price":3400.00,"asset":"ETH/USD","tvl_at_risk":2000000}
 
-## Paid Endpoints — Agents
-- POST /v1/agents/plan — Goal planner ($0.015)
-- POST /v1/agents/intent-classify — Intent classification ($0.005)
-- POST /v1/agents/reputation — A2A trust score ($0.010)
-- POST /v1/agents/reputation/history — Reputation history
-- POST /v1/agents/reputation/score — Score query
-- POST /v1/agents/status — Agent status
-- POST /v1/agents/update — Update agent
-- POST /v1/agents/deregister — Deregister agent
-- POST /v1/agents/capabilities — Query capabilities
-- POST /v1/agents/search — Search agents
-- POST /v1/agents/health — Agent health check
-- POST /v1/agents/discover — Discover agents
-- POST /v1/agents/message — Send message
-- POST /v1/agents/negotiate — Negotiate terms
-- POST /v1/agents/delegate — Delegate task
-- POST /v1/agents/sla — SLA check
-- POST /v1/agents/sla/create — Create SLA
-- POST /v1/agents/sla/verify — Verify SLA
-- POST /v1/agents/sla/list — List SLAs
-- POST /v1/agents/escrow — Escrow check
-- POST /v1/agents/escrow/create — Create escrow
-- POST /v1/agents/escrow/release — Release escrow
-- POST /v1/agents/escrow/dispute — Dispute escrow
-- POST /v1/agents/escrow/status — Escrow status
+### Liquid Shield — LQS-100-LiquidationBound
+POST /v1/defi/liquidation-check
+Fee: $0.04 + 1% of net equity (collateral - debt)
+Body: {"position_id":"pos-001","collateral_value":150000,"debt_value":95000,"collateral_factor":0.80}
 
-## Paid Endpoints — Inference
-- POST /v1/inference — Chat completions + guard ($0.015)
-- POST /v1/inference/stream — Streaming inference ($0.025)
-- POST /v1/inference/embeddings — Embeddings
-- POST /v1/inference/classify — Text classification
+### Bridge Proof — BRP-100-BridgeIntegrity
+POST /v1/defi/bridge-verify
+Fee: $0.08/verification
+Body: {"bridge_id":"stargate","source_chain":"ethereum","dest_chain":"base","amount":50000,"token":"USDC"}
 
-## Paid Endpoints — Text Processing
-- POST /v1/text/summarize — Summarization ($0.010)
-- POST /v1/text/sentiment — Sentiment analysis ($0.005)
-- POST /v1/text/classify — Classification
-- POST /v1/text/embed — Embeddings
-- POST /v1/text/translate — Translation
-- POST /v1/text/extract — Entity extraction
-- POST /v1/text/ner — Named entity recognition
-- POST /v1/text/tokenize — Tokenization
-- POST /v1/text/detect-language — Language detection
-- POST /v1/text/keywords — Keyword extraction
-- POST /v1/text/similarity — Semantic similarity
-- POST /v1/text/rewrite — Text rewriting
+### Contract Verify — CVR-100-AuditBound
+POST /v1/defi/contract-audit
+Fee: $0.15/audit
+Body: {"contract_id":"0xabc...","contract_type":"amm"}
 
-## Paid Endpoints — Shield / Delegation / UCAN / Keys / Audit / Credits
-- POST /v1/shield/session — Shield session
-- POST /v1/shield/post-quantum — Post-quantum security
-- POST /v1/shield/verify — Verify shield
-- POST /v1/shield/rotate — Rotate shield
-- POST /v1/delegate/verify — Verify delegation
-- POST /v1/delegate/chain — Delegation chain
-- POST /v1/delegate/revoke — Revoke delegation
-- POST /v1/delegate/list — List delegations
-- POST /v1/delegate/depth — Check depth
-- POST /v1/ucan/create — Create UCAN
-- POST /v1/ucan/verify — Verify UCAN
-- POST /v1/ucan/revoke — Revoke UCAN
-- POST /v1/ucan/delegate — Delegate via UCAN
-- POST /v1/key/generate — Generate key
-- POST /v1/key/rotate — Rotate key
-- POST /v1/key/revoke — Revoke key
-- POST /v1/credits/balance — Check balance
-- POST /v1/credits/purchase — Purchase credits
-- POST /v1/credits/history — Credit history
-- POST /v1/credits/usage — Usage report
-- POST /v1/audit/log — Log event
-- POST /v1/audit/trail — Audit trail
-- POST /v1/audit/export — Export audit log
-- POST /v1/compress — Compress data
-- POST /v1/compress/batch — Batch compress
-- POST /v1/compress/decompress — Decompress
-- POST /v1/compress/verify — Verify compression
-- POST /v1/swarm/relay — Relay message
-- POST /v1/swarm/broadcast — Broadcast to swarm
-- POST /v1/swarm/join — Join swarm
-- POST /v1/swarm/leave — Leave swarm
+### Yield Oracle — YLD-100-YieldConvergence
+POST /v1/defi/yield-optimize
+Fee: $0.04 + 2% of alpha generated
+Body: {"principal_usd":100000,"risk_tolerance":"medium"}
 
-## Authentication
-- API Key: Header `X-API-Key: YOUR_KEY` — Get at /pay
-- x402: Autonomous USDC payments on Base L2 / Polygon / Solana
+### VRF Gaming — VRF-100
+POST /v1/vrf/draw
+Fee: $0.01 + 0.5% of pot_value_usd
+Body: {"game_id":"lottery-1","round":42,"range_max":1000,"pot_value_usd":5000}
 
-## Quick Test
-curl https://atomadic.tech/v1/rng/quantum
+### VRF Verify — VRF-101 (included with draw)
+POST /v1/vrf/verify-draw
+Body: {"draw_id":"vrf-3a9f1c2d","expected_value":734}
 
-## Full Documentation
-- llms-full.txt (in this repo)
-- docs/QUICK_START.md
-- docs/PRICING.md
-- examples/ (curl, TypeScript, Python, MCP, LangChain, CrewAI, AutoGen)
+## Compliance Suite — EU AI Act · NIST AI RMF · ISO 42001
 
-## Contact
-atomadic@proton.me
+### Full Compliance Check — $0.04/check
+POST /v1/compliance/check
+Body: {"system_id":"model-prod","system_type":"high_risk","frameworks":["eu_ai_act","nist_rmf","iso_42001"]}
+
+### EU AI Act Certificate — $0.04/check
+POST /v1/compliance/eu-ai-act
+Body: {"system_id":"loan-decision","risk_category":"high_risk","intended_purpose":"creditworthiness_assessment"}
+
+### Fairness Proof — FNS-100-FairnessBound — $0.04/check
+POST /v1/compliance/fairness
+Body: {"model_id":"loan-classifier","dataset_id":"eval-q1","protected_attrs":["gender","age_group"],"metric":"disparate_impact"}
+
+### Explainability Certificate — XPL-100-ExplainBound — $0.04/call
+POST /v1/compliance/explain
+Body: {"model_id":"credit-scorer","decision_id":"dec-994f","subject_context":"loan_denial"}
+
+### Data Lineage — LIN-100-ChainIntegrity — $0.04/call
+POST /v1/compliance/lineage
+Body: {"model_id":"fraud-detector","dataset_stages":[{"stage":"source","hash":"sha256:a3f9..."},{"stage":"validated","hash":"sha256:cc1d..."}]}
+
+### Oversight Log — $0.02/event
+POST /v1/compliance/oversight
+Body: {"system_id":"model-prod","reviewer_id":"human-rev-01","decision":"approved","notes":"Output reviewed"}
+
+### Oversight History — $0.02/query
+GET /v1/compliance/oversight/history?system_id=model-prod
+
+### Incident Report — $0.02/report
+POST /v1/compliance/incident
+Body: {"system_id":"model-prod","severity":"serious","description":"Biased output","affected_users":12}
+
+### Incident Registry — $0.02/query
+GET /v1/compliance/incidents?system_id=model-prod
+
+### Transparency Report — $0.08/report
+POST /v1/compliance/transparency
+Body: {"system_id":"loan-scorer","period":"2026-Q1","include":["fairness","drift","oversight"]}
+
+### DriftGuard — DRG-100-DriftBound — $0.01/check
+POST /v1/drift/check
+Body: {"model_id":"model-prod","reference_window":"2026-01","current_window":"2026-04"}
+
+### Drift Certificate — $0.01/cert
+GET /v1/drift/certificate?id=drg-5a2b
+
+## Trust Oracle — TCM-100-BoundedMonotonicity
+
+POST /v1/trust/score — $0.04/call
+Body: {"agent_id":"did:key:z6Mkm..."}
+
+GET /v1/trust/history?agent_id=... — $0.04/query
+
+## Core AI Safety Endpoints
+
+### Hallucination Oracle
+POST /v1/oracle/hallucination — $0.04/call
+Body: {"text":"The model output to verify","context":"optional context"}
+
+### RatchetGate Session Security
+POST /v1/ratchet/register — $0.02/call
+POST /v1/ratchet/advance — $0.02/call
+POST /v1/ratchet/status — $0.004/call
+POST /v1/ratchet/probe — $0.02/call
+
+### VeriRand Quantum RNG
+GET /v1/rng/quantum — Free
+POST /v1/verirand/bytes — Paid
+
+### Agent Intelligence
+POST /v1/agents/semantic-diff — $0.04/call
+POST /v1/agents/intent-classify — $0.02/call
+POST /v1/agents/reputation — $0.04/call
+POST /v1/agents/plan — $0.06/call
+POST /v1/agents/contradiction — $0.02/call
+
+### Escrow & A2A Economy
+POST /v1/escrow/create — $0.04/call
+POST /v1/escrow/release — $0.02/call
+POST /v1/escrow/status — $0.008/call
+POST /v1/escrow/dispute — $0.06/call
+
+### Reputation Ledger
+POST /v1/reputation/record — $0.02/call
+GET /v1/reputation/score — $0.008/call
+
+### SLA Management
+POST /v1/sla/register — $0.08/call
+POST /v1/sla/report — $0.02/call
+GET /v1/sla/status — $0.008/call
+
+### Text Processing
+POST /v1/text/summarize — $0.04/call
+POST /v1/text/keywords — $0.02/call
+POST /v1/text/sentiment — $0.02/call
+
+### Threat Scoring
+POST /v1/threat/score — $0.06/call
+POST /v1/security/zero-day — $0.04/call
+
+### HELIX Model Downloads (one-time purchase)
+- LLaMA 3.2 1B — $19
+- Phi-3.5 Mini — $29
+- Qwen2.5 7B — $49
+
+### Prompt Packs (one-time download)
+From $9 per pack. 16 packs across healthcare, legal, fintech, AI safety, cybersecurity, and more.
+See: https://atomadic.tech/packs
+
+## x402 Payment Protocol
+
+```
+# Step 1: Call any paid endpoint — get 402 challenge
+curl -X POST https://atomadic.tech/v1/trust/score \
+  -H "Content-Type: application/json" \
+  -d '{"agent_id":"did:key:z6Mkm..."}'
+# Returns: HTTP 402 with PAYMENT-REQUIRED header and JSON body
+
+# Step 2: Pay USDC on Base L2 (chain 8453) to treasury
+# Treasury: 0xCBd9e4c44958ee76E0F941106Ea960D476c48FD9
+# USDC contract: 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913
+
+# Step 3: Retry with PAYMENT-SIGNATURE header
+curl -X POST https://atomadic.tech/v1/trust/score \
+  -H "Content-Type: application/json" \
+  -H "PAYMENT-SIGNATURE: <sig>;<pk>;<txid>;<amount_micro>;<drift>;<nonce>" \
+  -d '{"agent_id":"did:key:z6Mkm..."}'
+```
+
+## MCP Integration
+
+```json
+{
+  "mcpServers": {
+    "aaaa-nexus": {
+      "url": "https://atomadic.tech/mcp",
+      "transport": "http"
+    }
+  }
+}
+```

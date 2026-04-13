@@ -2,7 +2,7 @@
 
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
-[![Endpoints](https://img.shields.io/badge/endpoints-129-blue)](https://atomadic.tech/openapi.json)
+[![Endpoints](https://img.shields.io/badge/endpoints-200-blue)](https://atomadic.tech/openapi.json)
 [![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://atomadic.tech/mcp)
 [![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://atomadic.tech/.well-known/agent.json)
 [![CI Verification](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml/badge.svg)](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml)
@@ -65,7 +65,7 @@ Autonomous agents operating without human oversight face six critical infrastruc
 
 ## The Solution
 
-**129 API endpoints across 22 product families** — every safety claim backed by formal proofs in Lean 4.
+**200 API endpoints across 22 product families** — every safety claim backed by formal proofs in Lean 4.
 
 ### Core Products
 
@@ -86,6 +86,9 @@ Autonomous agents operating without human oversight face six critical infrastruc
 | **Key Management** | Generate, rotate, and revoke cryptographic keys |
 | **Audit Trail** | Tamper-proof logging, trails, and export |
 | **Credits & Billing** | Balance, purchase, usage history |
+| **DeFi Suite** | 9 formally verified DeFi endpoints — oracle guard, liquidation check, bridge proof, VRF gaming, LP optimization, risk scoring, contract audit, yield optimization |
+| **Compliance Suite** | 12 EU AI Act / NIST RMF / ISO 42001 endpoints — fairness proofs, explainability certs, lineage chains, drift monitoring, incident logging |
+| **Trust Oracle** | Bounded trust scoring for on-chain governance — TCM-100-BoundedMonotonicity theorem |
 
 ---
 
@@ -186,7 +189,7 @@ Or get an **API key** for bulk calls: https://atomadic.tech/pay
 
 ### Pricing
 
-Starting at **$0.002/call**. Credit packs: $4 (500 calls) / $15 (2,000) / $49 (7,500). Credits never expire. [Full pricing](./docs/PRICING.md).
+Starting at **$0.008/call** with an API key. Free trial: 3 calls/day on every endpoint (no key needed, 2s delay). Credit packs: **$8 (500 calls) / $15 (2,500 calls) / $49 (10,000 calls)** — never expire. Stripe or USDC on Base L2. [Full pricing](./docs/PRICING.md).
 
 ---
 
