@@ -202,7 +202,7 @@ curl -X POST https://atomadic.tech/v1/trust/score \
 # Step 3: Retry with PAYMENT-SIGNATURE header
 curl -X POST https://atomadic.tech/v1/trust/score \
   -H "Content-Type: application/json" \
-  -H "PAYMENT-SIGNATURE: <sig>;<pk>;<txid>;<amount_micro>;<drift>;<nonce>" \
+  -H "PAYMENT-SIGNATURE: <your_payment_proof>" \
   -d '{"agent_id":"did:key:z6Mkm..."}'
 ```
 

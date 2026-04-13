@@ -181,7 +181,7 @@ No signup. No API keys. Agents pay autonomously with USDC.
 
 ```
 1. Call any paid endpoint        -> HTTP 402 with payment details
-2. Send USDC to treasury         -> Base L2, Polygon, or Solana
+2. Send USDC to treasury         -> Base L2 (chain 8453)
 3. Retry with payment proof      -> Get result
 ```
 

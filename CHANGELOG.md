@@ -42,12 +42,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 - Credit pack starter tier: $4 → $8 (500 calls)
-- Dynamic fee encoded stateless in x402 nonce bytes 20-27 (no KV storage required)
+- Dynamic fee computation has zero infrastructure overhead — challenge-time pricing, no additional services required
 
 ### Fixed
-- `/defi` and `/compliance` routes returning 404 (missing from router Marketing arm)
+- `/defi` and `/compliance` routes returning 404 (routing configuration corrected)
 - Bridge verify returning 500 on GET requests
-- 20 Rust compiler warnings resolved
+- Infrastructure reliability improvements
 
 ## [0.5.0] — 2026-04-08
 
