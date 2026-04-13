@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://atomadic.tech/logo.png" alt="AAAA-Nexus" width="120"/>
+</p>
+
 # AAAA Nexus — Formally Verified AI Safety Infrastructure
 
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
