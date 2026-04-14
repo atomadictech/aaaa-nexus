@@ -6,7 +6,7 @@
 
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
-[![Endpoints](https://img.shields.io/badge/endpoints-200-blue)](https://atomadic.tech/openapi.json)
+[![Endpoints](https://img.shields.io/badge/endpoints-102-blue)](https://atomadic.tech/openapi.json)
 [![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://atomadic.tech/mcp)
 [![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://atomadic.tech/.well-known/agent.json)
 [![CI Verification](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml/badge.svg)](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml)
@@ -69,7 +69,7 @@ Autonomous agents operating without human oversight face six critical infrastruc
 
 ## The Solution
 
-**200 API endpoints across 22 product families** — every safety claim backed by formal proofs in Lean 4.
+**102 API endpoints across 25 product families** — every safety claim backed by formal proofs in Lean 4.
 
 ### Core Products
 
@@ -93,6 +93,65 @@ Autonomous agents operating without human oversight face six critical infrastruc
 | **DeFi Suite** | 9 formally verified DeFi endpoints — oracle guard, liquidation check, bridge proof, VRF gaming, LP optimization, risk scoring, contract audit, yield optimization |
 | **Compliance Suite** | 12 EU AI Act / NIST RMF / ISO 42001 endpoints — fairness proofs, explainability certs, lineage chains, drift monitoring, incident logging |
 | **Trust Oracle** | Bounded trust scoring for on-chain governance — TCM-100-BoundedMonotonicity theorem |
+
+### Endpoint Count
+
+| Category | Count | Auth Required |
+|----------|-------|---------------|
+| **Free Infrastructure** | ~18 | None |
+| **Free A2A / Grand Opening** | ~8 | None |
+| **Agent Ecosystem** | ~3 | None |
+| **Forge Marketplace** | ~6 | None |
+| **Paid Services** (API key / x402) | ~45 | API key or x402 USDC |
+| **Payment & Billing** | ~9 | None / Stripe |
+| **Admin** | ~7 | Owner token |
+| **VeriRand Premium** | ~6 | API key |
+| **Total (live, v0.5.0)** | **102** | — |
+
+Verified live: `curl https://atomadic.tech/v1/metrics` → `"endpoints": 102, "product_families": 25`
+
+---
+
+## Payment Processing
+
+AAAA Nexus supports two payment paths:
+
+### Stripe (Cards & Apple/Google Pay)
+
+```
+POST /v1/payments/stripe/session   → Creates a Stripe Checkout session
+GET  /v1/payments/stripe/prices    → Lists all available credit packs and prompt packs
+POST /v1/webhooks/stripe           → Stripe webhook (fulfills orders, delivers API keys)
+POST /v1/pay/verify                → Verify a completed payment and retrieve your API key
+```
+
+**Credit pack flow:**
+
+```
+1. POST /v1/payments/stripe/session  { "price_id": "...", "email": "..." }
+   → { "checkout_url": "https://checkout.stripe.com/..." }
+2. Complete payment in browser
+3. API key delivered by email (Resend)
+4. Use key: curl -H "X-API-Key: an_YOUR_KEY"  https://atomadic.tech/v1/compress
+```
+
+### x402 USDC (Autonomous / Base L2)
+
+```
+1. Call any paid endpoint            → HTTP 402  { amount, treasury, chain_id: 8453 }
+2. Send USDC to treasury on Base L2  → on-chain tx
+3. Retry with X-Payment proof header → Get result (zero added latency)
+```
+
+### Credit Packs
+
+| Pack | Price | Calls | Per-call rate |
+|------|-------|-------|---------------|
+| Starter | $8 | 500 | $0.016 |
+| Standard | $15 | 2,500 | $0.006 |
+| Pro | $49 | 10,000 | $0.0049 |
+
+Credits never expire. Get an API key at **https://atomadic.tech/pay**
 
 ---
 

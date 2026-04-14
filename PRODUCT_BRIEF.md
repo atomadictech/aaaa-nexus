@@ -35,7 +35,7 @@ Result: Agents either operate in isolated silos or risk Byzantine attacks and fi
 
 ## Traction
 
-- **200+ Production Endpoints** across 30 product families
+- **102 Production Endpoints** across 25 product families
 - **x402 Payments Live** on Base L2 (USDC)
 - **Formally Verified** — Lean 4 proofs with zero `sorry`, zero axioms
 - **MCP + A2A Compatible** — Works with Claude, Cursor, LangChain, AutoGen, CrewAI
@@ -59,6 +59,59 @@ For compliance: $0.04/check vs $500K+ for a Big 4 probabilistic audit.
 ## Team
 
 **Atomadic Tech** — Making agent-to-agent communication fast, safe, and financially transparent.
+
+## Payment Processing Capabilities
+
+AAAA Nexus operates a production-hardened payment stack supporting two distinct payment paths:
+
+### Stripe Integration
+
+- **Cards, Apple Pay, Google Pay** via Stripe Checkout
+- **Credit pack products** — Starter ($8 / 500 calls), Standard ($15 / 2,500 calls), Pro ($49 / 10,000 calls)
+- **Prompt packs** — Pre-built expert prompt collections sold as one-time purchases
+- **Model downloads** — HELIX-compressed model files purchasable via Stripe
+- **Email delivery** — API keys delivered automatically via Resend after payment confirmation
+- **Webhook reliability** — Dead-letter queue (DLQ) ensures zero lost fulfillments
+- **Automatic retry** — Failed webhook deliveries retry with exponential backoff
+- **Admin audit trail** — `/v1/admin/webhook-log` provides full processing history
+
+### USDC On-Chain (Base L2)
+
+- **x402 protocol** — HTTP 402 challenge/response, no pre-registration required
+- **Base L2 (chain 8453)** — Low gas fees, USDC settlement
+- **Autonomous agent support** — Agents pay per-call without human intervention
+- **No subscription lock-in** — Pay exactly for what you use, per call
+- **Treasury address** — Disclosed in each 402 response header
+
+### Credit System
+
+| Pack | Price | Calls | Per-call rate | Expiry |
+|------|-------|-------|---------------|--------|
+| Starter | $8 | 500 | $0.016 | Never |
+| Standard | $15 | 2,500 | $0.006 | Never |
+| Pro | $49 | 10,000 | $0.0049 | Never |
+
+Credits purchased via Stripe or USDC — fungible across all paid endpoints.
+
+### Payment Flow (Stripe)
+
+```
+Agent/User → POST /v1/payments/stripe/session → Stripe Checkout URL
+         → Complete payment in browser
+         → Stripe webhook → POST /v1/webhooks/stripe
+         → Resend email → API key delivered (< 30s)
+         → Use key: X-API-Key: an_YOUR_KEY
+```
+
+### Payment Flow (x402 USDC)
+
+```
+Agent → Any paid endpoint (no auth)
+      ← HTTP 402 + {amount, treasury, chain: 8453}
+Agent → Send USDC on Base L2
+Agent → Same endpoint + X-Payment: <tx_hash>
+      ← 200 + result (zero latency penalty)
+```
 
 ## Contact
 
