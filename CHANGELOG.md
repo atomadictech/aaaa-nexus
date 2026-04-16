@@ -4,6 +4,17 @@ All notable changes to the AAAA Nexus API are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.0.0] — 2026-04-16
+
+### Added
+- **Official TypeScript SDK** — `aaaa-nexus-sdk@1.0.0` published to npm
+  - Full type coverage for all 102 endpoints
+  - Automatic x402 USDC payment handling (402 → pay → retry, zero boilerplate)
+  - CJS + ESM dual-module output with TypeScript declarations
+  - `NexusClient` with named resource namespaces: `oracle`, `trust`, `ratchet`, `security`, `identity`, `agents`, `escrow`, `reputation`, `sla`, `a2a`, `defi`, `vrf`, `compliance`, `drift`, `text`, `rng`, `payments`, `inference`
+  - Install: `npm install aaaa-nexus-sdk`
+  - Docs: [npmjs.com/package/aaaa-nexus-sdk](https://www.npmjs.com/package/aaaa-nexus-sdk)
+
 ## [0.5.1] — 2026-04-12
 
 ### Added

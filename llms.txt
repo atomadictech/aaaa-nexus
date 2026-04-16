@@ -1,6 +1,15 @@
 # AAAA Nexus
 
-> 200+ formally verified AI safety + DeFi API endpoints across 30 product families. Mathematical proofs, not benchmarks.
+> 102 formally verified AI safety + DeFi API endpoints across 25 product families. Mathematical proofs, not benchmarks.
+
+## TypeScript SDK
+npm install aaaa-nexus-sdk
+https://www.npmjs.com/package/aaaa-nexus-sdk
+import { NexusClient } from 'aaaa-nexus-sdk';
+const nexus = new NexusClient({ apiKey: 'an_...' });
+// Free: nexus.rng.quantum(), nexus.health(), nexus.oracle.entropy()
+// Paid: nexus.oracle.hallucination(), nexus.trust.score(), nexus.defi.optimize(), etc.
+// x402: new NexusClient({ x402: { getProof: async (challenge) => txHash } })
 
 ## API Base URL
 https://atomadic.tech

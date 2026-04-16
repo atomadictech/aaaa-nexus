@@ -1,131 +1,233 @@
-# TypeScript Integration — AAAA Nexus API
+# TypeScript Integration — AAAA Nexus
 
-## Direct HTTP (No SDK)
+Two approaches: **SDK** (recommended) or **direct HTTP**.
+
+---
+
+## Option 1: Official SDK (Recommended)
+
+```bash
+npm install aaaa-nexus-sdk
+```
+
+Full type coverage, automatic x402 payment handling, zero boilerplate.
+
+### Free endpoints (no auth)
+
+```typescript
+import { NexusClient } from 'aaaa-nexus-sdk';
+
+const nexus = new NexusClient();
+
+const rng     = await nexus.rng.quantum();
+const health  = await nexus.health();
+const entropy = await nexus.oracle.entropy();
+
+// Register agent in A2A registry
+await nexus.agents.register({
+  agent_id: 'ts-agent-001',
+  capabilities: ['inference', 'planning'],
+});
+
+// View swarm topology
+const topology = await nexus.agents.topology();
+```
+
+### With API key
+
+```typescript
+import { NexusClient } from 'aaaa-nexus-sdk';
+
+const nexus = new NexusClient({ apiKey: process.env.NEXUS_API_KEY });
+
+// Hallucination oracle
+const hall = await nexus.oracle.hallucination({
+  claim: 'The speed of light is 299,792,458 m/s',
+  context: 'physics',
+});
+console.log(hall.hallucination_bound); // e.g. 0.003
+console.log(hall.verdict);             // "likely_accurate"
+console.log(hall.verified);            // true
+
+// Threat scoring
+const threat = await nexus.security.threatScore({
+  payload: { query: "SELECT * FROM users WHERE '1'='1'" },
+  agent_id: 'ts-agent-001',
+});
+
+// RatchetGate — CVE-2025-6514 mitigation
+const session = await nexus.ratchet.register({
+  session_id: crypto.randomUUID(),
+  agent_id: 'ts-agent-001',
+});
+await nexus.ratchet.advance({
+  session_id: session.session_id,
+  key_id: session.key_id,
+});
+
+// Chat inference with hallucination guard
+const response = await nexus.inference.chat({
+  messages: [{ role: 'user', content: 'Explain formal verification' }],
+  hallucination_guard: true,
+});
+
+// EU AI Act compliance check
+const compliance = await nexus.compliance.euAiAct({
+  system_id: 'my-model-prod',
+  risk_category: 'high_risk',
+  intended_purpose: 'credit_scoring',
+});
+
+// DeFi — LP optimization
+const lp = await nexus.defi.optimize({
+  protocol: 'uniswap_v3',
+  position: { token_a: 'ETH', token_b: 'USDC', amount_usd: 50_000 },
+  risk_tolerance: 'medium',
+});
+```
+
+### x402 autonomous payments
+
+```typescript
+import { NexusClient } from 'aaaa-nexus-sdk';
+
+const nexus = new NexusClient({
+  x402: {
+    getProof: async (challenge) => {
+      // challenge = { amount, amountUsd, treasury, chainId, token, endpoint }
+      const txHash = await myWallet.sendUsdc({
+        to: challenge.treasury,
+        amount: challenge.amount,   // micro-USDC
+        chainId: challenge.chainId, // 8453 = Base L2
+      });
+      return txHash;
+    },
+  },
+});
+
+// SDK automatically: call → 402 → getProof() → retry with X-Payment header
+const score = await nexus.trust.score({ agent_id: 'did:key:z6Mk...' });
+```
+
+### Error handling
+
+```typescript
+import { NexusClient, NexusError } from 'aaaa-nexus-sdk';
+
+try {
+  const result = await nexus.oracle.hallucination({ claim: '...' });
+} catch (err) {
+  if (err instanceof NexusError) {
+    console.error(err.status);  // 429
+    console.error(err.code);    // "rate_limit_exceeded"
+    console.error(err.message); // "Trial limit reached — add API key or use x402"
+  }
+}
+```
+
+### Streaming inference
+
+```typescript
+const stream = await nexus.inference.stream({
+  messages: [{ role: 'user', content: 'Write a haiku about formal proofs' }],
+});
+
+const reader = stream.getReader();
+const decoder = new TextDecoder();
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  process.stdout.write(decoder.decode(value));
+}
+```
+
+---
+
+## Option 2: Direct HTTP (No SDK)
+
+If you prefer raw fetch without installing anything:
 
 ```typescript
 const API_BASE = "https://atomadic.tech";
+const API_KEY  = process.env.NEXUS_API_KEY!;
 
-// Health check
-const health = await fetch(`${API_BASE}/health`).then(r => r.json());
-console.log(health);
-
-// Entropy oracle (free)
-const entropy = await fetch(`${API_BASE}/v1/oracle/entropy`).then(r => r.json());
-console.log(entropy);
-
-// Quantum RNG (free)
-const rng = await fetch(`${API_BASE}/v1/rng/quantum`).then(r => r.json());
-console.log(rng);
-
-// Register agent (free)
-const agent = await fetch(`${API_BASE}/v1/agents/register`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    agent_id: "ts-agent-001",
-    capabilities: ["inference", "planning"],
-  }),
-}).then(r => r.json());
-console.log(agent);
-```
-
-## With API Key
-
-```typescript
-const API_KEY = process.env.AAAA_NEXUS_API_KEY!;
-
-async function nexusPost(path: string, body: object) {
-  const res = await fetch(`${API_BASE}${path}`, {
-    method: "POST",
+async function nexus<T>(path: string, body?: object): Promise<T> {
+  const resp = await fetch(`${API_BASE}${path}`, {
+    method: body ? "POST" : "GET",
     headers: {
       "Content-Type": "application/json",
-      "X-API-Key": API_KEY,
+      ...(API_KEY ? { "X-API-Key": API_KEY } : {}),
     },
-    body: JSON.stringify(body),
+    body: body ? JSON.stringify(body) : undefined,
   });
-  if (!res.ok) throw new Error(`${res.status}: ${await res.text()}`);
-  return res.json();
+  if (!resp.ok) throw new Error(`${resp.status} ${await resp.text()}`);
+  return resp.json();
 }
 
-// Hallucination oracle
-const hallCheck = await nexusPost("/v1/oracle/hallucination", {
-  claim: "The speed of light is 299,792,458 m/s",
-  context: "physics",
-});
-console.log(hallCheck);
+// Free
+const rng = await nexus<{ random: number }>("/v1/rng/quantum");
 
-// Threat scoring
-const threat = await nexusPost("/v1/threat/score", {
+// Paid
+const threat = await nexus("/v1/threat/score", {
+  payload: { query: "user input here" },
   agent_id: "ts-agent-001",
-  context: "financial-transaction",
 });
-console.log(threat);
-
-// Chat inference with hallucination guard
-const inference = await nexusPost("/v1/inference", {
-  messages: [{ role: "user", content: "Explain formal verification" }],
-});
-console.log(inference);
 ```
+
+---
 
 ## MCP Client Integration
 
 ```typescript
-// For Claude Desktop or Cursor, add to your MCP config:
-// {
-//   "mcpServers": {
-//     "aaaa-nexus": {
-//       "url": "https://atomadic.tech/mcp"
-//     }
-//   }
-// }
-
-// For programmatic MCP access:
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 
 const transport = new StreamableHTTPClientTransport(
   new URL("https://atomadic.tech/mcp")
 );
-
 const client = new Client({ name: "my-app", version: "1.0.0" });
 await client.connect(transport);
 
 const tools = await client.listTools();
 console.log("Available tools:", tools.tools.map(t => t.name));
 
-// Call a tool
-const result = await client.callTool({
-  name: "health",
-  arguments: {},
-});
-console.log(result);
+const result = await client.callTool({ name: "health", arguments: {} });
 ```
+
+---
 
 ## A2A Protocol Integration
 
 ```typescript
-// Discover the agent
-const agentCard = await fetch(
-  `${API_BASE}/.well-known/agent.json`
-).then(r => r.json());
-console.log("Agent capabilities:", agentCard);
+import { NexusClient } from 'aaaa-nexus-sdk';
+
+const nexus = new NexusClient();
+
+// Discover agent capabilities
+const card = await nexus.a2a.agentCard();
+console.log("Skills:", card.skills.map(s => s.id));
 
 // Send A2A message
-const a2aResult = await fetch(`${API_BASE}/a2a`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    jsonrpc: "2.0",
-    method: "message/send",
-    params: {
-      message: {
-        role: "user",
-        parts: [{ type: "text", text: "Check system health" }],
-      },
+const response = await nexus.a2a.send({
+  jsonrpc: "2.0",
+  method: "message/send",
+  params: {
+    message: {
+      role: "user",
+      parts: [{ type: "text", text: "Check system health" }],
     },
-    id: "1",
-  }),
-}).then(r => r.json());
-console.log(a2aResult);
+  },
+  id: "1",
+});
 ```
+
+---
+
+## Resources
+
+| Resource | Link |
+|----------|------|
+| SDK on npm | [npmjs.com/package/aaaa-nexus-sdk](https://www.npmjs.com/package/aaaa-nexus-sdk) |
+| API reference | [API_REFERENCE.md](../API_REFERENCE.md) |
+| Pricing | [docs/PRICING.md](../docs/PRICING.md) |
+| Get API key | https://atomadic.tech/pay |

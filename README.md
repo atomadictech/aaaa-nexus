@@ -7,6 +7,7 @@
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
 [![Endpoints](https://img.shields.io/badge/endpoints-102-blue)](https://atomadic.tech/openapi.json)
+[![npm](https://img.shields.io/npm/v/aaaa-nexus-sdk?color=6366f1&label=npm%20sdk)](https://www.npmjs.com/package/aaaa-nexus-sdk)
 [![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://atomadic.tech/mcp)
 [![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://atomadic.tech/.well-known/agent.json)
 [![CI Verification](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml/badge.svg)](https://github.com/atomadictech/aaaa-nexus/actions/workflows/verify.yml)
@@ -26,7 +27,7 @@ Production-grade infrastructure for autonomous agents with built-in x402 USDC mi
 curl https://atomadic.tech/v1/rng/quantum
 ```
 
-That's it. No signup, no API key, no SDK. You just got a cryptographically verified random number from a formally verified system.
+That's it. No signup, no API key required. You just got a cryptographically verified random number from a formally verified system.
 
 <details>
 <summary>Expected response</summary>
@@ -152,6 +153,36 @@ POST /v1/pay/verify                → Verify a completed payment and retrieve y
 | Pro | $49 | 10,000 | $0.0049 |
 
 Credits never expire. Get an API key at **https://atomadic.tech/pay**
+
+---
+
+## TypeScript SDK
+
+```bash
+npm install aaaa-nexus-sdk
+```
+
+```typescript
+import { NexusClient } from 'aaaa-nexus-sdk';
+
+// Free endpoints — no auth
+const nexus = new NexusClient();
+const rng = await nexus.rng.quantum();
+
+// Paid endpoints — API key
+const nexus = new NexusClient({ apiKey: process.env.NEXUS_API_KEY });
+const result = await nexus.oracle.hallucination({ claim: '...', context: 'physics' });
+console.log(result.hallucination_bound); // e.g. 0.003 — formally proved upper bound
+
+// Autonomous agent payments — x402 USDC, no API key needed
+const nexus = new NexusClient({
+  x402: { getProof: async (challenge) => await wallet.sendUsdc(challenge) }
+});
+// SDK auto-handles: call → 402 → pay → retry
+const score = await nexus.trust.score({ agent_id: 'did:key:z6Mk...' });
+```
+
+Full SDK docs: [npmjs.com/package/aaaa-nexus-sdk](https://www.npmjs.com/package/aaaa-nexus-sdk)
 
 ---
 
