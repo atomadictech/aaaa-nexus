@@ -1,8 +1,8 @@
 # AAAA Nexus — API Reference
 
 **Base URL:** `https://atomadic.tech`
-**Version:** v0.5.0
-**Live endpoint count:** 102 across 25 product families
+**Version:** v0.5.1
+**Live endpoint count:** 119 across 30 product families
 
 All responses are JSON. All requests accept `Content-Type: application/json`.
 
@@ -345,7 +345,7 @@ curl https://atomadic.tech/v1/metrics
 
 ```json
 {
-  "endpoints": 102,
+  "endpoints": 119,
   "epoch": 1776132480,
   "platform": "AAAA-Nexus",
   "pricing": {
@@ -355,9 +355,9 @@ curl https://atomadic.tech/v1/metrics
     "model": "pay-per-call",
     "network": "base"
   },
-  "product_families": 25,
+  "product_families": 30,
   "uptime_target": "99.9%",
-  "version": "0.5.0"
+  "version": "0.5.1"
 }
 ```
 

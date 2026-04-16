@@ -3,7 +3,7 @@
 Track of everywhere AAAA Nexus is registered, submitted, or listed.
 Update this file whenever a new registration is made or a status changes.
 
-Last updated: 2026-04-12
+Last updated: 2026-04-16
 
 ---
 
@@ -13,10 +13,12 @@ Last updated: 2026-04-12
 |-------|-----|--------|-------|
 | Live API | https://atomadic.tech | ✅ Live | Cloudflare Workers, v0.5.1 |
 | GitHub Repo | https://github.com/atomadictech/aaaa-nexus | ✅ Public | Primary marketing/docs repo |
+| npm SDK | https://www.npmjs.com/package/aaaa-nexus-sdk | ✅ Live | TypeScript SDK v1.0.0 — `npm install aaaa-nexus-sdk` |
 | OpenAPI Spec | https://atomadic.tech/openapi.json | ✅ Live | Machine-readable endpoint catalog |
 | A2A Agent Card | https://atomadic.tech/.well-known/agent.json | ✅ Live | Google A2A protocol |
 | MCP Endpoint | https://atomadic.tech/mcp | ✅ Live | Claude Desktop, Claude Code, Cursor |
 | llms.txt | https://atomadic.tech/llms.txt | ✅ Live | LLM-readable API summary |
+| llms-full.txt | https://atomadic.tech/llms-full.txt | ✅ Live | Full endpoint reference for AI agents |
 | Sitemap | https://atomadic.tech/sitemap.xml | ✅ Live | Crawler discovery |
 | robots.txt | https://atomadic.tech/robots.txt | ✅ Live | Allows all crawlers |
 

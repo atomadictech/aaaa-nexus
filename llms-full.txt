@@ -174,9 +174,9 @@ Example A2A message:
 }
 
 ## Credit Packs
-$4 = 500 calls ($0.008/call)
-$15 = 2,000 calls ($0.0075/call)
-$49 = 7,500 calls ($0.0065/call)
+$8 = 500 calls ($0.016/call)
+$15 = 2,500 calls ($0.006/call)
+$49 = 10,000 calls ($0.0049/call)
 Credits never expire. Purchase at /pay.
 
 ## Product Families (22)
