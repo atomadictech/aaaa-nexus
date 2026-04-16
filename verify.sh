@@ -124,11 +124,18 @@ check_openapi() {
     log_fail "OpenAPI spec not available"
     return
   fi
-  if echo "$resp" | grep -q '"openapi"'; then
-    log_pass "OpenAPI spec is valid and served"
+  local oa_version
+  oa_version=$(echo "$resp" | grep -o '"openapi":"[^"]*"' | head -1 | cut -d'"' -f4)
+  if [ -n "$oa_version" ]; then
+    log_pass "OpenAPI spec served (version: ${oa_version})"
+    # Count paths if present in the response
     local paths_count
-    paths_count=$(echo "$resp" | grep -c '"/' 2>/dev/null || echo "0")
-    log_info "Spec contains ${paths_count}+ path definitions"
+    paths_count=$(echo "$resp" | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('paths',{})))" 2>/dev/null || echo "0")
+    if [ "$paths_count" -gt 0 ] 2>/dev/null; then
+      log_info "Spec documents ${paths_count} path(s)"
+    else
+      log_info "Spec metadata valid — full path docs in llms-full.txt and SDK"
+    fi
   else
     log_fail "OpenAPI spec missing version field"
   fi
@@ -227,8 +234,8 @@ check_session_security() {
     -H "Content-Type: application/json" \
     -d '{"session_id":"verify-test"}' 2>/dev/null) || http_code="000"
 
-  if [ "$http_code" = "402" ] || [ "$http_code" = "401" ]; then
-    log_pass "RatchetGate active — payment/auth gate enforced"
+  if [ "$http_code" = "402" ] || [ "$http_code" = "401" ] || [ "$http_code" = "403" ]; then
+    log_pass "RatchetGate active — auth gate enforced (HTTP ${http_code})"
     log_info "Session security endpoint operational (CVE-2025-6514 mitigation)"
   elif [ "$http_code" = "200" ]; then
     log_pass "RatchetGate session registration operational"

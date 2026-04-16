@@ -1,7 +1,8 @@
 # AAAA Nexus — Full LLM Reference
 
-> Formally verified AI safety APIs for autonomous agents.
+> 119 formally verified AI safety + DeFi API endpoints across 30 product families.
 > Every safety guarantee is mathematically proved in Lean 4 — not benchmarked, not tested, proved.
+> SDK: npm install aaaa-nexus-sdk
 
 ## API Base URL
 https://atomadic.tech

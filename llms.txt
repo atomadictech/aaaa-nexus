@@ -1,6 +1,6 @@
 # AAAA Nexus
 
-> 102 formally verified AI safety + DeFi API endpoints across 25 product families. Mathematical proofs, not benchmarks.
+> 119 formally verified AI safety + DeFi API endpoints across 30 product families. Mathematical proofs, not benchmarks.
 
 ## TypeScript SDK
 npm install aaaa-nexus-sdk
