@@ -6,7 +6,7 @@
 
 [![Live API](https://img.shields.io/badge/API-live-brightgreen)](https://atomadic.tech)
 [![Verification](https://img.shields.io/badge/proofs-formally%20verified-blueviolet)](#verify-our-claims)
-[![Endpoints](https://img.shields.io/badge/endpoints-119-blue)](https://atomadic.tech/openapi.json)
+[![Endpoints](https://img.shields.io/badge/endpoints-146%2B-blue)](https://atomadic.tech/openapi.json)
 [![npm](https://img.shields.io/npm/v/aaaa-nexus-sdk?color=6366f1&label=npm%20sdk)](https://www.npmjs.com/package/aaaa-nexus-sdk)
 [![MCP](https://img.shields.io/badge/MCP-compatible-orange)](https://atomadic.tech/mcp)
 [![A2A](https://img.shields.io/badge/A2A-Google%20protocol-informational)](https://atomadic.tech/.well-known/agent.json)
@@ -70,7 +70,7 @@ Autonomous agents operating without human oversight face six critical infrastruc
 
 ## The Solution
 
-**119 API endpoints across 30 product families** — every safety claim backed by formal proofs in Lean 4.
+**146+ API endpoints across 34 product families** — every safety claim backed by formal proofs in Lean 4.
 
 ### Core Products
 
@@ -103,13 +103,13 @@ Autonomous agents operating without human oversight face six critical infrastruc
 | **Free A2A / Grand Opening** | ~8 | None |
 | **Agent Ecosystem** | ~3 | None |
 | **Forge Marketplace** | ~6 | None |
-| **Paid Services** (API key / x402) | ~45 | API key or x402 USDC |
+| **Paid Services** (API key / x402) | ~50 | API key or x402 USDC |
 | **Payment & Billing** | ~9 | None / Stripe |
 | **Admin** | ~7 | Owner token |
 | **VeriRand Premium** | ~6 | API key |
-| **Total (live, v0.5.1)** | **119** | — |
+| **Total (live, v0.5.1)** | **146** | — |
 
-Verified live: `curl https://atomadic.tech/v1/metrics` → `"endpoints": 119, "product_families": 30`
+Verified live: `curl https://atomadic.tech/openapi.json | jq '.paths | length'` → `146`
 
 ---
 

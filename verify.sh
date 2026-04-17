@@ -125,7 +125,7 @@ check_openapi() {
     return
   fi
   local oa_version
-  oa_version=$(echo "$resp" | grep -o '"openapi":"[^"]*"' | head -1 | cut -d'"' -f4)
+  oa_version=$(echo "$resp" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('openapi',''))" 2>/dev/null)
   if [ -n "$oa_version" ]; then
     log_pass "OpenAPI spec served (version: ${oa_version})"
     # Count paths if present in the response

@@ -477,7 +477,7 @@ Free trial: 3 calls/day per IP with no auth (2s delay).
 
 ### POST /v1/compress
 
-HELIX geometric model compression — submits a model for Leech-lattice + Golay ECC compression.
+HELIX geometric model compression — submits a model for lossless lattice-based vector quantization with ECC-guarded integrity.
 
 ```bash
 curl -X POST https://atomadic.tech/v1/compress \
