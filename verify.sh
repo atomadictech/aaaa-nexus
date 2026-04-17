@@ -212,7 +212,7 @@ check_hallucination_bound() {
   http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 \
     -X POST "${API_BASE}/v1/oracle/hallucination" \
     -H "Content-Type: application/json" \
-    -d '{"claim":"test","context":"verification"}' 2>/dev/null) || http_code="000"
+    -d '{"claim":"test","context":"verification"}' 2>/dev/null | tr -d '\r') || http_code="000"
 
   if [ "$http_code" = "402" ]; then
     log_pass "Hallucination oracle active — returns 402 (payment required)"
@@ -232,7 +232,7 @@ check_session_security() {
   http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 \
     -X POST "${API_BASE}/v1/ratchet/register" \
     -H "Content-Type: application/json" \
-    -d '{"session_id":"verify-test"}' 2>/dev/null) || http_code="000"
+    -d '{"session_id":"verify-test"}' 2>/dev/null | tr -d '\r') || http_code="000"
 
   if [ "$http_code" = "402" ] || [ "$http_code" = "401" ] || [ "$http_code" = "403" ]; then
     log_pass "RatchetGate active — auth gate enforced (HTTP ${http_code})"
@@ -250,7 +250,7 @@ check_trust_ceiling() {
   http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 \
     -X POST "${API_BASE}/v1/identity/verify" \
     -H "Content-Type: application/json" \
-    -d '{"agent_id":"verify-test"}' 2>/dev/null) || http_code="000"
+    -d '{"agent_id":"verify-test"}' 2>/dev/null | tr -d '\r') || http_code="000"
 
   if [ "$http_code" = "402" ] || [ "$http_code" = "401" ]; then
     log_pass "Identity verification active — payment/auth gate enforced"
@@ -268,7 +268,7 @@ check_delegation_depth() {
   http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 \
     -X POST "${API_BASE}/v1/threat/score" \
     -H "Content-Type: application/json" \
-    -d '{"agent_id":"verify-test","context":"depth-check"}' 2>/dev/null) || http_code="000"
+    -d '{"agent_id":"verify-test","context":"depth-check"}' 2>/dev/null | tr -d '\r') || http_code="000"
 
   if [ "$http_code" = "402" ] || [ "$http_code" = "401" ]; then
     log_pass "Threat scoring active — payment/auth gate enforced"
